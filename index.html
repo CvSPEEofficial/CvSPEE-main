@@ -11,11 +11,11 @@
     <meta property="og:site_name" content="CVSPEE">
     <meta property="og:title" content="CVSPEE - CvSU Shop">
     <meta property="og:description" content="Shop official Cavite State University uniforms, school supplies, and campus essentials at CVSPEE.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/CvSPEEofficial/CvSPEE-main/refs/heads/main/images/logo.png">
+    <meta property="og:image" content="https://jhaydiazu113-sudo.github.io/images/logo.png">
     <meta property="og:url" content="https://jhaydiazu113-sudo.github.io/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CVSPEE - CvSU Campus Shop">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/CvSPEEofficial/CvSPEE-main/refs/heads/main/images/logo.png">
+    <meta name="twitter:image" content="https://jhaydiazu113-sudo.github.io/images/logo.png">
 
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="apple-touch-icon" href="images/logo.png">
@@ -6453,6 +6453,30 @@ body.dark-mode .category-filter-panel .filter-group-label {
     color: #aaa;
 }
 
+
+/* product list header: on small screens the "New Product" filter and the "Add Product"
+   button go on their own row under the title so they don't crowd it */
+@media only screen and (max-width: 760px) {
+    .product-section-head {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 28px;
+        margin-bottom: 50px;
+    }
+
+    .product-section-head .title {
+        order: 1;
+        flex: 0 0 100%;
+        text-align: center;
+    }
+
+    .product-section-head .new-product-filter,
+    .product-section-head .add-product-btn {
+        position: static;
+        transform: none;
+        order: 2;
+    }
+}
 </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11547,7 +11571,7 @@ body.dark-mode .category-filter-panel .filter-group-label {
                 '<div class="product-image-wrap">' +
                     (isNewProduct(product) ? '<span class="product-new-ribbon">New</span>' : '') +
                     '<img src="' + product.image + '" alt="' + escapeHtml(product.name) + '">' +
-                    ((normGender(product.gender) === "Male" || normGender(product.gender) === "Female") ? '<span class="product-gender-tag">' + normGender(product.gender) + '</span>' : '') +
+                    (normGender(product.gender) ? '<span class="product-gender-tag">' + normGender(product.gender) + '</span>' : '') +
                 '</div>' +
                 '<h4>' + escapeHtml(product.name) + '</h4>' +
                 '<div class="ratings" id="rating-' + product.id + '"><h2>☆☆☆☆☆</h2></div>' +
