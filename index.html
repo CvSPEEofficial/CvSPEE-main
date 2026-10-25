@@ -11,11 +11,11 @@
     <meta property="og:site_name" content="CVSPEE">
     <meta property="og:title" content="CVSPEE - CvSU Shop">
     <meta property="og:description" content="Shop official Cavite State University uniforms, school supplies, and campus essentials at CVSPEE.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/CvSPEEofficial/CvSPEE-main/refs/heads/main/images/logo.png">
-    <meta property="og:url" content="https://cvspeeofficial.github.io/">
+    <meta property="og:image" content="https://jhaydiazu113-sudo.github.io/images/logo.png">
+    <meta property="og:url" content="https://jhaydiazu113-sudo.github.io/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CVSPEE - CvSU Campus Shop">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/CvSPEEofficial/CvSPEE-main/refs/heads/main/images/logo.png">
+    <meta name="twitter:image" content="https://jhaydiazu113-sudo.github.io/images/logo.png">
 
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="apple-touch-icon" href="images/logo.png">
@@ -6477,6 +6477,527 @@ body.dark-mode .category-filter-panel .filter-group-label {
         order: 2;
     }
 }
+
+/* ===================== Filters: scalable layout ===================== */
+.filters-btn {
+    border-radius: 6px;
+}
+
+.filters-count {
+    display: none;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: #FFC72C;
+    color: #063A1C;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+}
+
+.filters-count.show {
+    display: inline-block;
+}
+
+.category-filter-panel {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0;
+    width: min(440px, 92vw);
+    max-width: none;
+    max-height: min(70vh, 560px);
+    overflow: hidden;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.category-filter-panel.show {
+    display: flex;
+}
+
+.fs-head {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.fs-title {
+    flex: 1 1 auto;
+    font-weight: 700;
+    font-size: 16px;
+    color: #222;
+}
+
+.fs-clear {
+    border: none;
+    background: none;
+    color: #0B5C2E;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.fs-close {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f1f1;
+    color: #444;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.fs-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 6px 16px 10px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fs-section {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.fs-section:last-child {
+    border-bottom: none;
+}
+
+.fs-section-title {
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.fs-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.fs-chip {
+    padding: 7px 14px;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    background: #fff;
+    color: #444;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fs-chip:hover {
+    background: #f5f5f5;
+}
+
+.fs-chip.active {
+    background: #0B5C2E;
+    border-color: #0B5C2E;
+    color: #fff;
+}
+
+.fs-foot {
+    flex: 0 0 auto;
+    padding: 10px 16px 14px;
+    border-top: 1px solid #eee;
+    background: #fff;
+}
+
+.fs-done {
+    width: 100%;
+    margin: 0;
+}
+
+.filter-backdrop {
+    display: none;
+}
+
+.active-filters {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: -8px auto 22px;
+}
+
+.active-filters.show {
+    display: flex;
+}
+
+.af-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px 5px 12px;
+    border: 1px solid #0B5C2E;
+    border-radius: 6px;
+    background: #E6EFE8;
+    color: #0B5C2E;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.af-chip span {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.af-clear {
+    border: none;
+    background: none;
+    color: #666;
+    font-family: inherit;
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* phones: the panel becomes a bottom sheet so a long list never covers the products */
+@media only screen and (max-width: 600px) {
+    .filter-backdrop.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 5500;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .category-filter-panel {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        max-height: 78vh;
+        max-height: 78dvh;
+        border-radius: 18px 18px 0 0;
+        border: none;
+        z-index: 5501;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    body.filters-open {
+        overflow: hidden;
+    }
+}
+
+body.dark-mode .category-filter-panel,
+body.dark-mode .fs-foot {
+    background: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark-mode .fs-title {
+    color: #eee;
+}
+
+body.dark-mode .fs-head,
+body.dark-mode .fs-section {
+    border-color: #333;
+}
+
+body.dark-mode .fs-chip {
+    background: #262626;
+    border-color: #444;
+    color: #ddd;
+}
+
+body.dark-mode .fs-chip.active {
+    background: #0B5C2E;
+    border-color: #0B5C2E;
+    color: #fff;
+}
+
+body.dark-mode .af-chip {
+    background: #1f2d24;
+    color: #bfe3c9;
+}
+
+/* price range filter */
+.fs-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fs-price-field {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.fs-price-field:focus-within {
+    border-color: #0B5C2E;
+}
+
+.fs-price-field span {
+    color: #777;
+    font-size: 14px;
+}
+
+.fs-price-field input {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    padding: 9px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    color: inherit;
+    -moz-appearance: textfield;
+}
+
+.fs-price-field input::-webkit-outer-spin-button,
+.fs-price-field input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.fs-price-dash {
+    color: #999;
+}
+
+.fs-price-hint {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #888;
+}
+
+.fs-price-error {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #c0392b;
+}
+
+body.dark-mode .fs-price-field {
+    background: #262626;
+    border-color: #444;
+}
+
+/* ===================== Size chart ===================== */
+.pd-sizechart {
+    margin: 14px 0 6px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+}
+
+.pd-sizechart-title {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0B5C2E;
+}
+
+.pd-sizechart-scroll {
+    overflow-x: auto;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sizechart-table {
+    width: 100%;
+    min-width: 260px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.sizechart-table th {
+    padding: 8px 12px;
+    background: #0B5C2E;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.sizechart-table td {
+    padding: 8px 12px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    color: #333;
+}
+
+.sizechart-table td:first-child {
+    font-weight: 700;
+    color: #0B5C2E;
+}
+
+.sizechart-table tbody tr:nth-child(even) td {
+    background: #f7faf8;
+}
+
+.pd-sizechart-note {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #777;
+}
+
+.sizechart-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.sizechart-edit textarea {
+    width: 100%;
+    min-height: 92px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Consolas, Menlo, monospace;
+    font-size: 13px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.sizechart-edit-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sizechart-edit-actions button {
+    padding: 6px 14px;
+    border: 1px solid #0B5C2E;
+    border-radius: 6px;
+    background: #fff;
+    color: #0B5C2E;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.sizechart-preview .pd-sizechart-scroll {
+    margin-top: 4px;
+}
+
+.sizechart-preview-error {
+    color: #c0392b;
+    font-size: 13px;
+}
+
+body.dark-mode .pd-sizechart {
+    border-color: #333;
+}
+
+body.dark-mode .pd-sizechart-scroll {
+    border-color: #333;
+}
+
+body.dark-mode .sizechart-table td {
+    color: #ddd;
+    border-color: #333;
+}
+
+body.dark-mode .sizechart-table tbody tr:nth-child(even) td {
+    background: #1d2420;
+}
+
+body.dark-mode .sizechart-table td:first-child {
+    color: #9fd6b1;
+}
+
+body.dark-mode .sizechart-edit {
+    border-color: #444;
+}
+
+body.dark-mode .sizechart-edit textarea {
+    background: #262626;
+    border-color: #444;
+    color: #eee;
+}
+
+body.dark-mode .sizechart-edit-actions button {
+    background: #1e1e1e;
+}
+
+.sc-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.sc-tab {
+    padding: 6px 16px;
+    border: 1px solid #0B5C2E;
+    border-radius: 6px;
+    background: #fff;
+    color: #0B5C2E;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sc-tab.active {
+    background: #0B5C2E;
+    color: #fff;
+}
+
+.sc-subtitle {
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+.sizechart-info {
+    font-size: 13px;
+    color: #0B5C2E;
+}
+
+.sizechart-info-error {
+    color: #c0392b;
+}
+
+body.dark-mode .sc-tab {
+    background: #1e1e1e;
+}
+
+body.dark-mode .sc-tab.active {
+    background: #0B5C2E;
+}
+
+body.dark-mode .sc-subtitle {
+    color: #ccc;
+}
 </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -6774,6 +7295,8 @@ body.dark-mode .category-filter-panel .filter-group-label {
             </div>
 
         </div>
+
+        <div class="pd-sizechart" id="pdSizeChart" style="display:none;"></div>
 
         <div class="reviews-section">
 
@@ -7398,6 +7921,22 @@ body.dark-mode .category-filter-panel .filter-group-label {
             <input type="text" id="newProductSizes" placeholder="Sizes, comma separated (e.g. Small, Medium, Large)" required>
             <p class="form-hint" id="newProductSizesHint">For footwear, list numeric sizes instead, e.g. 38, 39, 40.</p>
 
+            <div class="sizechart-edit" id="newSizeChartBox">
+                <span class="form-hint" style="margin:0;"><strong>Size chart</strong> &mdash; customers see it right away when they open the product.</span>
+                <select id="newSizeChartMode" onchange="sizeChartFormUpdate('new')"><option value="auto">Automatic (based on the product's category / name)</option><option value="tshirt">T-Shirt &amp; Shorts chart</option><option value="shoes">Shoe size chart</option><option value="none">No size chart</option><option value="custom">Custom (I will type my own)</option></select>
+                <span class="sizechart-info" id="newSizeChartInfo"></span>
+                <div id="newSizeChartCustom" style="display:none; flex-direction:column; gap:8px;">
+                    <textarea id="newSizeChartText" rows="5" placeholder="Size, Chest (in), Length (in)&#10;S, 36, 26&#10;M, 38, 27&#10;L, 40, 28" oninput="sizeChartFormUpdateSoon('new')"></textarea>
+                    <input type="text" id="newSizeChartNote" maxlength="120" placeholder="Note (optional), e.g. All measurements are in inches." oninput="sizeChartFormUpdateSoon('new')">
+                    <div class="sizechart-edit-actions">
+                        <button type="button" onclick="insertSizeChartExample('new')">Insert example</button>
+                        <button type="button" onclick="clearSizeChart('new')">Clear</button>
+                    </div>
+                    <span class="form-hint" style="margin:0;">First line = column names. One row per line. Separate columns with commas (or paste straight from Excel).</span>
+                </div>
+                <div class="sizechart-preview" id="newSizeChartPreview"></div>
+            </div>
+
             <input type="number" id="newProductStock" placeholder="Stock quantity (e.g. 50)" min="0" step="1" required>
 
             <p class="auth-error" id="addProductError"></p>
@@ -7475,6 +8014,22 @@ body.dark-mode .category-filter-panel .filter-group-label {
 
             <input type="text" id="editProductSizes" placeholder="Sizes, comma separated (e.g. Small, Medium, Large)" required>
             <p class="form-hint" id="editProductSizesHint">For footwear, list numeric sizes instead, e.g. 38, 39, 40.</p>
+
+            <div class="sizechart-edit" id="editSizeChartBox">
+                <span class="form-hint" style="margin:0;"><strong>Size chart</strong> &mdash; customers see it right away when they open the product.</span>
+                <select id="editSizeChartMode" onchange="sizeChartFormUpdate('edit')"><option value="auto">Automatic (based on the product's category / name)</option><option value="tshirt">T-Shirt &amp; Shorts chart</option><option value="shoes">Shoe size chart</option><option value="none">No size chart</option><option value="custom">Custom (I will type my own)</option></select>
+                <span class="sizechart-info" id="editSizeChartInfo"></span>
+                <div id="editSizeChartCustom" style="display:none; flex-direction:column; gap:8px;">
+                    <textarea id="editSizeChartText" rows="5" placeholder="Size, Chest (in), Length (in)&#10;S, 36, 26&#10;M, 38, 27&#10;L, 40, 28" oninput="sizeChartFormUpdateSoon('edit')"></textarea>
+                    <input type="text" id="editSizeChartNote" maxlength="120" placeholder="Note (optional), e.g. All measurements are in inches." oninput="sizeChartFormUpdateSoon('edit')">
+                    <div class="sizechart-edit-actions">
+                        <button type="button" onclick="insertSizeChartExample('edit')">Insert example</button>
+                        <button type="button" onclick="clearSizeChart('edit')">Clear</button>
+                    </div>
+                    <span class="form-hint" style="margin:0;">First line = column names. One row per line. Separate columns with commas (or paste straight from Excel).</span>
+                </div>
+                <div class="sizechart-preview" id="editSizeChartPreview"></div>
+            </div>
 
             <input type="number" id="editProductStock" placeholder="Stock quantity" min="0" step="1" required>
             <p class="form-hint">Update this to restock the item.</p>
@@ -7669,8 +8224,10 @@ body.dark-mode .category-filter-panel .filter-group-label {
                 <circle cx="16" cy="17" r="2.2" fill="currentColor" stroke="none"></circle>
             </svg>
         </button>
-        <div class="category-filter-panel" id="categoryFilterBar"></div>
+        <div class="category-filter-panel" id="categoryFilterBar" role="dialog" aria-label="Filters"></div>
     </div>
+    <div class="filter-backdrop" id="filterBackdrop" onclick="toggleCategoryFilterPanel(false)"></div>
+    <div class="active-filters" id="activeFilters"></div>
 
     <div class="product-section-head">
         <label class="new-product-filter" id="newProductFilterLabel">
@@ -11704,28 +12261,73 @@ body.dark-mode .category-filter-panel .filter-group-label {
     function toggleCategoryFilterPanel(forceState) {
         categoryFilterPanelOpen = (typeof forceState === "boolean") ? forceState : !categoryFilterPanelOpen;
         var panel = document.getElementById("categoryFilterBar");
+        var backdrop = document.getElementById("filterBackdrop");
         if (panel) panel.classList.toggle("show", categoryFilterPanelOpen);
+        if (backdrop) backdrop.classList.toggle("show", categoryFilterPanelOpen);
+        document.body.classList.toggle("filters-open", categoryFilterPanelOpen);
     }
 
+    // choosing a filter keeps the panel open so several can be combined; "Show N products" closes it
     function setCategoryFilter(normalizedCategory) {
         activeCategoryFilter = normalizedCategory;
         currentProductPage = 1;
-        toggleCategoryFilterPanel(false);
         renderProductGrid();
     }
 
     document.addEventListener("click", function (event) {
         if (!categoryFilterPanelOpen) return;
+        // a chip that was just re-rendered is already detached from the page: ignore that click
+        if (!document.body.contains(event.target)) return;
         var wrap = event.target.closest ? event.target.closest(".category-filter-wrap") : null;
         if (!wrap) toggleCategoryFilterPanel(false);
     });
 
-    function renderCategoryFilterBar() {
-        var bar = document.getElementById("categoryFilterBar");
-        var labelEl = document.getElementById("filtersBtnLabel");
-        var btnEl = document.getElementById("filtersBtn");
-        if (!bar) return;
+    // (numbers only: also safe if the page renders once before these lines have run)
+    function hasNum(v) { return typeof v === "number" && isFinite(v); }
 
+    var activePriceMin = null;
+    var activePriceMax = null;
+    var _filterKeepPanel = false;        // true while typing a price: update numbers only, keep the inputs
+
+    function formatPesoShort(n) {
+        return "\u20B1" + Number(n).toLocaleString("en-PH", { maximumFractionDigits: 2 });
+    }
+
+    function priceRangeLabel() {
+        if (hasNum(activePriceMin) && hasNum(activePriceMax)) return formatPesoShort(activePriceMin) + " \u2013 " + formatPesoShort(activePriceMax);
+        if (hasNum(activePriceMin)) return "From " + formatPesoShort(activePriceMin);
+        if (hasNum(activePriceMax)) return "Up to " + formatPesoShort(activePriceMax);
+        return null;
+    }
+
+    // lowest / highest price a customer pays right now (discounts included)
+    function catalogPriceRange() {
+        var lo = null, hi = null;
+        Object.keys(PRODUCTS).forEach(function (id) {
+            var p = getDiscountedPrice(PRODUCTS[id]);
+            if (!isFinite(p)) return;
+            if (lo === null || p < lo) lo = p;
+            if (hi === null || p > hi) hi = p;
+        });
+        return { min: lo, max: hi };
+    }
+
+    // quick price buttons that fit the products you actually have
+    function pricePresets(range) {
+        if (range.min === null || range.max - range.min < 150) return [];
+        function r50(n) { return Math.round(n / 50) * 50; }
+        var t1 = r50(range.min + (range.max - range.min) / 3);
+        var t2 = r50(range.min + 2 * (range.max - range.min) / 3);
+        if (t2 <= t1) return [];
+        return [
+            { label: "Under " + formatPesoShort(t1), min: null, max: t1 },
+            { label: formatPesoShort(t1) + " \u2013 " + formatPesoShort(t2), min: t1, max: t2 },
+            { label: "Over " + formatPesoShort(t2), min: t2, max: null }
+        ];
+    }
+
+    // To add another filter later: add one more entry here (type "chips" or "range").
+    function getFilterSections() {
         var seen = {};
         Object.keys(PRODUCTS).forEach(function (id) {
             var raw = (PRODUCTS[id].category || "").toString().trim();
@@ -11733,34 +12335,219 @@ body.dark-mode .category-filter-panel .filter-group-label {
             var norm = normalizeCategory(raw);
             if (!seen[norm]) seen[norm] = raw.charAt(0).toUpperCase() + raw.slice(1);
         });
+        var cats = Object.keys(seen).sort().map(function (n) { return { value: n, label: seen[n] }; });
 
-        var norms = Object.keys(seen).sort();
+        return [
+            {
+                key: "category", type: "chips", title: "Category",
+                options: [{ value: null, label: "All" }].concat(cats),
+                getValue: function () { return activeCategoryFilter; },
+                setValue: function (v) { activeCategoryFilter = v; },
+                describe: function () {
+                    var v = activeCategoryFilter;
+                    if (v === null) return null;
+                    return seen[v] || String(v);
+                }
+            },
+            {
+                key: "gender", type: "chips", title: "Gender",
+                options: [{ value: null, label: "All" }, { value: "Male", label: "Male" }, { value: "Female", label: "Female" }],
+                getValue: function () { return activeGenderFilter; },
+                setValue: function (v) { activeGenderFilter = v; },
+                describe: function () { return activeGenderFilter; }
+            },
+            {
+                key: "price", type: "range", title: "Price",
+                getValue: function () { return (hasNum(activePriceMin) || hasNum(activePriceMax)) ? "set" : null; },
+                setValue: function () { activePriceMin = null; activePriceMax = null; },
+                describe: priceRangeLabel
+            }
+        ];
+    }
 
-        var html = '<button type="button" class="category-filter-btn' +
-            (activeCategoryFilter === null ? ' active' : '') +
-            '" onclick="setCategoryFilter(null)">All</button>';
+    function productPassesFilters(product, query) {
+        var matchesQuery = !query || product.name.toLowerCase().indexOf(query) !== -1;
+        var matchesNewFilter = !newProductFilterActive || isNewProduct(product);
+        var matchesCategory = !activeCategoryFilter || normalizeCategory(product.category) === activeCategoryFilter;
+        if (!(matchesQuery && matchesNewFilter && matchesCategory && productMatchesGender(product))) return false;
 
-        html += norms.map(function (norm) {
-            return '<button type="button" class="category-filter-btn' +
-                (activeCategoryFilter === norm ? ' active' : '') +
-                '" onclick="setCategoryFilter(\'' + norm + '\')">' + escapeHtml(seen[norm]) + '</button>';
-        }).join("");
+        if (hasNum(activePriceMin) || hasNum(activePriceMax)) {
+            var price = getDiscountedPrice(product);
+            if (!isFinite(price)) return false;          // no valid price: can't be inside a price range
+            if (hasNum(activePriceMin) && price < activePriceMin) return false;
+            if (hasNum(activePriceMax) && price > activePriceMax) return false;
+        }
+        return true;
+    }
 
-        html += '<div class="filter-group-label">Gender</div>';
-        html += [["All", null], ["Male", "Male"], ["Female", "Female"]].map(function (g) {
-            return '<button type="button" class="category-filter-btn' +
-                (activeGenderFilter === g[1] ? ' active' : '') +
-                '" onclick="setGenderFilter(' + (g[1] ? "'" + g[1] + "'" : 'null') + ')">' + g[0] + '</button>';
-        }).join("");
+    function applyFilterChoice(key, value) {
+        var sections = getFilterSections();
+        for (var i = 0; i < sections.length; i++) {
+            if (sections[i].key === key) { sections[i].setValue(value === "" ? null : value); break; }
+        }
+        currentProductPage = 1;
+        renderProductGrid();
+    }
 
-        bar.innerHTML = html;
+    function clearAllFilters() {
+        getFilterSections().forEach(function (sec) { sec.setValue(null); });
+        currentProductPage = 1;
+        renderProductGrid();
+    }
+
+    function setPriceRange(min, max) {
+        activePriceMin = (min === null || min === undefined) ? null : Number(min);
+        activePriceMax = (max === null || max === undefined) ? null : Number(max);
+        currentProductPage = 1;
+        renderProductGrid();
+    }
+
+    // typing in Min / Max: update the products and the numbers, but keep the text boxes (and the keyboard) untouched
+    function onPriceInput() {
+        var mn = parseFloat(document.getElementById("fsPriceMin").value);
+        var mx = parseFloat(document.getElementById("fsPriceMax").value);
+        activePriceMin = (isFinite(mn) && mn >= 0) ? mn : null;
+        activePriceMax = (isFinite(mx) && mx >= 0) ? mx : null;
+        currentProductPage = 1;
+        _filterKeepPanel = true;
+        try { renderProductGrid(); } finally { _filterKeepPanel = false; }
+    }
+
+    (function filterPanelEvents() {
+        var bar = document.getElementById("categoryFilterBar");
+        if (bar) {
+            bar.addEventListener("click", function (e) {
+                var chip = e.target.closest ? e.target.closest(".fs-chip") : null;
+                if (!chip) return;
+                if (chip.getAttribute("data-preset") !== null) {
+                    var mn = chip.getAttribute("data-min"), mx = chip.getAttribute("data-max");
+                    var already = (activePriceMin === (mn === "" ? null : Number(mn))) && (activePriceMax === (mx === "" ? null : Number(mx)));
+                    if (already) setPriceRange(null, null);
+                    else setPriceRange(mn === "" ? null : mn, mx === "" ? null : mx);
+                    return;
+                }
+                applyFilterChoice(chip.getAttribute("data-fk"), chip.getAttribute("data-fv"));
+            });
+        }
+        var row = document.getElementById("activeFilters");
+        if (row) {
+            row.addEventListener("click", function (e) {
+                var chip = e.target.closest ? e.target.closest(".af-chip") : null;
+                if (chip) { applyFilterChoice(chip.getAttribute("data-fk"), ""); return; }
+                if (e.target.closest && e.target.closest(".af-clear")) clearAllFilters();
+            });
+        }
+    })();
+
+    function renderCategoryFilterBar() {
+        var bar = document.getElementById("categoryFilterBar");
+        var labelEl = document.getElementById("filtersBtnLabel");
+        var btnEl = document.getElementById("filtersBtn");
+        var rowEl = document.getElementById("activeFilters");
+        if (!bar) return;
+
+        var sections = getFilterSections();
+        var active = [];
+        sections.forEach(function (sec) {
+            var label = sec.describe();
+            if (label === null || label === undefined) return;
+            active.push({ key: sec.key, label: String(label) });
+        });
+
+        // how many products match right now (same rules as the grid)
+        var searchInput = document.getElementById("productSearchInput");
+        var query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+        var matchCount = Object.keys(PRODUCTS).filter(function (id) { return productPassesFilters(PRODUCTS[id], query); }).length;
+        var countText = "Show " + matchCount + " product" + (matchCount === 1 ? "" : "s");
+
+        var headHtml = '<div class="fs-head"><span class="fs-title">Filters</span>' +
+            (active.length ? '<button type="button" class="fs-clear" onclick="clearAllFilters()">Clear all</button>' : '') +
+            '<button type="button" class="fs-close" aria-label="Close filters" onclick="toggleCategoryFilterPanel(false)">&times;</button></div>';
+
+        var existingBody = bar.querySelector ? bar.querySelector(".fs-body") : null;
+
+        if (_filterKeepPanel && existingBody) {
+            // typing a price: refresh only the header, the count button and the error text
+            var oldHead = bar.querySelector(".fs-head");
+            if (oldHead) oldHead.outerHTML = headHtml;
+            var done = bar.querySelector(".fs-done");
+            if (done) done.textContent = countText;
+            var err = bar.querySelector(".fs-price-error");
+            if (err) err.textContent = (hasNum(activePriceMin) && hasNum(activePriceMax) && activePriceMin > activePriceMax) ? "Min is higher than Max." : "";
+        } else {
+            var prevScroll = existingBody ? existingBody.scrollTop : 0;
+            var range = catalogPriceRange();
+            var html = headHtml + '<div class="fs-body">';
+
+            sections.forEach(function (sec) {
+                html += '<div class="fs-section"><div class="fs-section-title">' + escapeHtml(sec.title) + '</div>';
+
+                if (sec.type === "range") {
+                    var presets = pricePresets(range);
+                    html += '<div class="fs-price">' +
+                        '<label class="fs-price-field"><span>\u20B1</span><input type="number" inputmode="decimal" min="0" id="fsPriceMin" placeholder="Min" value="' +
+                            (hasNum(activePriceMin) ? activePriceMin : "") + '" oninput="onPriceInput()"></label>' +
+                        '<span class="fs-price-dash">\u2013</span>' +
+                        '<label class="fs-price-field"><span>\u20B1</span><input type="number" inputmode="decimal" min="0" id="fsPriceMax" placeholder="Max" value="' +
+                            (hasNum(activePriceMax) ? activePriceMax : "") + '" oninput="onPriceInput()"></label></div>';
+                    html += '<div class="fs-price-error">' +
+                        ((hasNum(activePriceMin) && hasNum(activePriceMax) && activePriceMin > activePriceMax) ? "Min is higher than Max." : "") + '</div>';
+                    if (presets.length) {
+                        html += '<div class="fs-chips" style="margin-top:10px;">';
+                        presets.forEach(function (p) {
+                            var on = (activePriceMin === p.min) && (activePriceMax === p.max);
+                            html += '<button type="button" class="fs-chip' + (on ? ' active' : '') + '" data-preset="1" data-min="' +
+                                (p.min === null ? "" : p.min) + '" data-max="' + (p.max === null ? "" : p.max) + '">' + escapeHtml(p.label) + '</button>';
+                        });
+                        html += '</div>';
+                    }
+                    if (range.min !== null) {
+                        html += '<div class="fs-price-hint">Prices here: ' + formatPesoShort(Math.floor(range.min)) + ' \u2013 ' + formatPesoShort(Math.ceil(range.max)) + '</div>';
+                    }
+                } else {
+                    html += '<div class="fs-chips">';
+                    sec.options.forEach(function (o) {
+                        var on = (sec.getValue() === o.value) || (o.value === null && (sec.getValue() === null || sec.getValue() === undefined));
+                        html += '<button type="button" class="fs-chip' + (on ? ' active' : '') + '" aria-pressed="' + on +
+                            '" data-fk="' + sec.key + '" data-fv="' + escapeHtml(o.value === null ? "" : String(o.value)).replace(/"/g, "&quot;") + '">' + escapeHtml(o.label) + '</button>';
+                    });
+                    html += '</div>';
+                }
+                html += '</div>';
+            });
+            html += '</div>';
+
+            html += '<div class="fs-foot"><button type="button" class="btn fs-done" onclick="toggleCategoryFilterPanel(false)">' + countText + '</button></div>';
+
+            bar.innerHTML = html;
+            var newBody = bar.querySelector ? bar.querySelector(".fs-body") : null;
+            if (newBody) newBody.scrollTop = prevScroll;
+        }
         bar.classList.toggle("show", categoryFilterPanelOpen);
 
-        var filterBits = [];
-        if (activeCategoryFilter && seen[activeCategoryFilter]) filterBits.push(seen[activeCategoryFilter]);
-        if (activeGenderFilter) filterBits.push(activeGenderFilter);
-        if (labelEl) labelEl.textContent = filterBits.length ? ("Filters: " + filterBits.join(" \u00B7 ")) : "Filters";
-        if (btnEl) btnEl.classList.toggle("active", filterBits.length > 0);
+        // button label + count badge
+        if (labelEl) labelEl.textContent = "Filters";
+        if (btnEl) {
+            var badge = btnEl.querySelector(".filters-count");
+            if (!badge) {
+                badge = document.createElement("span");
+                badge.className = "filters-count";
+                btnEl.insertBefore(badge, btnEl.firstChild ? btnEl.firstChild.nextSibling : null);
+            }
+            badge.textContent = active.length;
+            badge.classList.toggle("show", active.length > 0);
+            btnEl.classList.toggle("active", active.length > 0);
+        }
+
+        // chips under the button: always shows what is applied, one tap removes it
+        if (rowEl) {
+            var rowHtml = active.map(function (a) {
+                return '<button type="button" class="af-chip" data-fk="' + a.key + '" title="Remove filter">' + escapeHtml(a.label) + ' <span>&times;</span></button>';
+            }).join("");
+            if (active.length > 1) rowHtml += '<button type="button" class="af-clear">Clear all</button>';
+            rowEl.innerHTML = rowHtml;
+            rowEl.classList.toggle("show", active.length > 0);
+        }
     }
 
     function renderProductGrid() {
@@ -11773,17 +12560,13 @@ body.dark-mode .category-filter-panel .filter-group-label {
         var query = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
         var ids = Object.keys(PRODUCTS).filter(function (id) {
-            var matchesQuery = !query || PRODUCTS[id].name.toLowerCase().indexOf(query) !== -1;
-            var matchesNewFilter = !newProductFilterActive || isNewProduct(PRODUCTS[id]);
-            var matchesCategory = !activeCategoryFilter || normalizeCategory(PRODUCTS[id].category) === activeCategoryFilter;
-            var matchesGender = productMatchesGender(PRODUCTS[id]);
-            return matchesQuery && matchesNewFilter && matchesCategory && matchesGender;
+            return productPassesFilters(PRODUCTS[id], query);
         });
 
         if (ids.length === 0) {
             var emptyMsg = newProductFilterActive
                 ? "No new products right now."
-                : ((activeCategoryFilter || activeGenderFilter)
+                : ((activeCategoryFilter || activeGenderFilter || hasNum(activePriceMin) || hasNum(activePriceMax))
                     ? "No products found for this filter."
                     : 'No products found for "' + escapeHtml(searchInput ? searchInput.value.trim() : "") + '".');
             grid.innerHTML = '<p class="product-search-empty">' + emptyMsg + '</p>';
@@ -11963,6 +12746,7 @@ body.dark-mode .category-filter-panel .filter-group-label {
         document.getElementById("newProductName").value = "";
         document.getElementById("newProductPrice").value = "";
         document.getElementById("newProductDescription").value = "";
+        fillSizeChartForm("new", null);
         document.getElementById("newProductSizes").value = "";
         document.getElementById("newProductStock").value = "";
         document.getElementById("newProductImageInput").value = "";
@@ -12249,6 +13033,11 @@ body.dark-mode .category-filter-panel .filter-group-label {
             errorEl.textContent = "Please choose Male, Female or Unisex.";
             return false;
         }
+        var sizeChartRes = readSizeChartFromForm("new");
+        if (sizeChartRes.error) {
+            errorEl.textContent = sizeChartRes.error;
+            return false;
+        }
         if (galleryTooLarge(newProductExtraImages)) {
             errorEl.textContent = "The extra photos are too large together. Remove one or two.";
             return false;
@@ -12265,6 +13054,8 @@ body.dark-mode .category-filter-panel .filter-group-label {
             sizes: sizes,
             stock: stock,
             gender: gender,
+            sizeChartMode: sizeChartRes.mode,
+            sizeChart: sizeChartRes.chart,
             galleryCount: newProductExtraImages.length,
             createdAt: Date.now()
         };
@@ -12330,6 +13121,7 @@ body.dark-mode .category-filter-panel .filter-group-label {
         document.getElementById("editProductImageInput").value = "";
         document.getElementById("editProductExtraInput").value = "";
         document.getElementById("editProductGender").value = normGender(product.gender);
+        fillSizeChartForm("edit", product);
         editProductExtraImages = [];
         editGalleryLoaded = !product.galleryCount;
         renderExtraThumbs("edit");
@@ -12467,6 +13259,11 @@ body.dark-mode .category-filter-panel .filter-group-label {
             return false;
         }
         var newGender = normGender(document.getElementById("editProductGender").value) || normGender(existing.gender);
+        var sizeChartRes = readSizeChartFromForm("edit");
+        if (sizeChartRes.error) {
+            errorEl.textContent = sizeChartRes.error;
+            return false;
+        }
 
         var updatedProduct = {
             id: productId,
@@ -12479,6 +13276,8 @@ body.dark-mode .category-filter-panel .filter-group-label {
             stock: stock,
             discount: discount,
             gender: newGender,
+            sizeChartMode: sizeChartRes.mode,
+            sizeChart: sizeChartRes.chart,
             galleryCount: editGalleryLoaded ? editProductExtraImages.length : (existing.galleryCount || 0),
             createdAt: (typeof existing.createdAt === "number") ? existing.createdAt : null
         };
@@ -12755,7 +13554,6 @@ body.dark-mode .category-filter-panel .filter-group-label {
     function setGenderFilter(g) {
         activeGenderFilter = g;
         currentProductPage = 1;
-        toggleCategoryFilterPanel(false);
         renderProductGrid();
     }
 
@@ -12960,6 +13758,364 @@ body.dark-mode .category-filter-panel .filter-group-label {
     }
 
 
+    // =====================================================================
+    // Size chart: shown right away in the product details.
+    //  - ready-made charts (T-shirt & shorts, shoes) are picked AUTOMATICALLY from the product's
+    //    category / name, so every new product gets one without the owner doing anything
+    //  - the owner can force one, turn it off, or type a custom chart
+    // product.sizeChartMode: "auto" (default) | "tshirt" | "shoes" | "none" | "custom"
+    // product.sizeChart: only used by "custom"  ->  { headers: [...], rows: [ { c: [...] } ], note }
+    //   (rows are objects because Firestore does not allow an array directly inside an array)
+    // =====================================================================
+    var SIZE_CHART_PRESETS = {
+        tshirt: {
+            label: "T-Shirt & Shorts (Unisex)",
+            title: "T-Shirt & Shorts Size Chart (Unisex)",
+            tables: [
+                {
+                    tab: "Asian Fit",
+                    title: "Asian Sizes (Standard Fit in the Philippines / Asia)",
+                    headers: ["Size", "Chest / Width (Inches)", "T-Shirt Length (Inches)", "Waistline (Inches)", "Shorts Length (Inches)"],
+                    rows: [
+                        ["S", "18\" (46 cm)", "26\" (66 cm)", "26\" \u2013 28\"", "15\" (38 cm)"],
+                        ["M", "19\" (48 cm)", "27\" (69 cm)", "29\" \u2013 31\"", "16\" (41 cm)"],
+                        ["L", "20\" (51 cm)", "28\" (71 cm)", "32\" \u2013 34\"", "17\" (43 cm)"],
+                        ["XL", "21\" (53 cm)", "29\" (74 cm)", "35\" \u2013 37\"", "18\" (46 cm)"],
+                        ["2XL", "22\" (56 cm)", "30\" (76 cm)", "38\" \u2013 40\"", "19\" (48 cm)"]
+                    ]
+                },
+                {
+                    tab: "US / Oversized",
+                    title: "American / US Sizes (Oversized / Loose Fit)",
+                    headers: ["Size", "Chest / Width (Inches)", "T-Shirt Length (Inches)", "Waistline (Inches)", "Recommended Fit Comparison"],
+                    rows: [
+                        ["XS", "18\" (46 cm)", "27\" (69 cm)", "28\" \u2013 30\"", "Fits like Asian S"],
+                        ["S", "20\" (51 cm)", "28\" (71 cm)", "30\" \u2013 32\"", "Fits like Asian M"],
+                        ["M", "22\" (56 cm)", "29\" (74 cm)", "32\" \u2013 34\"", "Fits like Asian L"],
+                        ["L", "24\" (61 cm)", "30\" (76 cm)", "35\" \u2013 37\"", "Fits like Asian XL"],
+                        ["XL", "26\" (66 cm)", "31\" (79 cm)", "38\" \u2013 40\"", "Fits like Asian 2XL"],
+                        ["2XL", "28\" (71 cm)", "32\" (81 cm)", "41\" \u2013 43\"", "Fits like Asian 3XL"]
+                    ]
+                }
+            ]
+        },
+        shoes: {
+            label: "Shoes",
+            title: "Shoe Size Conversion Chart",
+            tables: [
+                {
+                    tab: "Men's",
+                    title: "Men's Shoes",
+                    headers: ["US / American", "EU / Asian Standard", "UK", "Foot Length (CM / Inches)"],
+                    rows: [
+                        ["US 7", "EU 40", "UK 6.5", "25.0 cm (9.8\")"],
+                        ["US 8", "EU 41", "UK 7.5", "26.0 cm (10.2\")"],
+                        ["US 9", "EU 42.5", "UK 8.5", "27.0 cm (10.6\")"],
+                        ["US 10", "EU 44", "UK 9.5", "28.0 cm (11.0\")"],
+                        ["US 11", "EU 45", "UK 10.5", "29.0 cm (11.4\")"]
+                    ]
+                },
+                {
+                    tab: "Women's",
+                    title: "Women's Shoes",
+                    headers: ["US / American", "EU / Asian Standard", "UK", "Foot Length (CM / Inches)"],
+                    rows: [
+                        ["US 5", "EU 35.5", "UK 3", "22.0 cm (8.6\")"],
+                        ["US 6", "EU 36.5", "UK 4", "23.0 cm (9.0\")"],
+                        ["US 7", "EU 37.5", "UK 5", "24.0 cm (9.4\")"],
+                        ["US 8", "EU 38.5", "UK 6", "25.0 cm (9.8\")"],
+                        ["US 9", "EU 40", "UK 7", "26.0 cm (10.2\")"]
+                    ]
+                }
+            ]
+        }
+    };
+
+    var SIZECHART_MODES = [
+        { value: "auto", label: "Automatic (based on the product's category / name)" },
+        { value: "tshirt", label: "T-Shirt & Shorts chart" },
+        { value: "shoes", label: "Shoe size chart" },
+        { value: "none", label: "No size chart" },
+        { value: "custom", label: "Custom (I will type my own)" }
+    ];
+
+    var SIZECHART_MAX_COLS = 8;
+    var SIZECHART_MAX_ROWS = 20;
+    var SIZECHART_MAX_CELL = 24;
+    var SIZECHART_EXAMPLE = "Size, Chest (in), Length (in)\nS, 36, 26\nM, 38, 27\nL, 40, 28\nXL, 42, 29";
+
+    // which ready-made chart fits this product?  returns "shoes", "tshirt" or "" (none)
+    function detectSizeChartKind(name, category, sizes) {
+        // accessories / items with no size ("One Size") never need a chart
+        if (Array.isArray(sizes) && sizes.length === 1 && /one\s*size/i.test(String(sizes[0]))) return "";
+        var text = (String(category || "") + " " + String(name || "")).toLowerCase();
+        if (/shoe|footwear|sneaker|sandal|slipper|boots?\b|loafer/.test(text)) return "shoes";
+        if (/uniform|t-?shirt|\btee\b|shirt|jersey|shorts|polo|blouse|pants|trouser|jogger|tracksuit|track\s*suit|jacket|hoodie|apparel|clothing|\bpe\b/.test(text)) return "tshirt";
+        return "";
+    }
+
+    function scRows(chart) {
+        return (chart && Array.isArray(chart.rows) ? chart.rows : []).map(function (r) {
+            return Array.isArray(r) ? r : (r && Array.isArray(r.c) ? r.c : []);
+        });
+    }
+
+    // what chart should this product show?  { title, tables:[{tab,title,headers,rows:[[..]]}], note } or null
+    function resolveSizeChart(product) {
+        if (!product) return null;
+        var mode = product.sizeChartMode || "auto";
+        if (mode === "none") return null;
+
+        if (mode === "custom") {
+            var c = product.sizeChart;
+            if (!c || !Array.isArray(c.headers) || !c.headers.length || !scRows(c).length) return null;
+            return { title: "", tables: [{ tab: "", title: "", headers: c.headers, rows: scRows(c) }], note: c.note || "" };
+        }
+
+        var kind = mode;
+        if (mode === "auto") kind = detectSizeChartKind(product.name, product.category, product.sizes);
+        var preset = SIZE_CHART_PRESETS[kind];
+        return preset ? { title: preset.title, tables: preset.tables, note: preset.note || "", kind: kind } : null;
+    }
+
+    function buildSizeChartTable(headers, rows) {
+        var wrap = document.createElement("div");
+        wrap.className = "pd-sizechart-scroll";
+        var table = document.createElement("table");
+        table.className = "sizechart-table";
+        var thead = document.createElement("thead");
+        var hr = document.createElement("tr");
+        headers.forEach(function (h) {
+            var th = document.createElement("th");
+            th.textContent = h;
+            hr.appendChild(th);
+        });
+        thead.appendChild(hr);
+        table.appendChild(thead);
+        var tbody = document.createElement("tbody");
+        rows.forEach(function (r) {
+            var tr = document.createElement("tr");
+            headers.forEach(function (_, i) {
+                var td = document.createElement("td");
+                td.textContent = (r[i] === undefined || r[i] === null) ? "" : String(r[i]);
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        wrap.appendChild(table);
+        return wrap;
+    }
+
+    // draws a chart (with tabs when it has more than one table) into `box`
+    function renderSizeChartInto(box, chart, preferredTab, showHeading) {
+        box.innerHTML = "";
+        if (!chart) return;
+
+        if (showHeading) {
+            var heading = document.createElement("div");
+            heading.className = "pd-sizechart-title";
+            heading.textContent = chart.title || "Size Chart";
+            box.appendChild(heading);
+        }
+
+        var tabsEl = null;
+        var holder = document.createElement("div");
+        var current = Math.min(Math.max(preferredTab || 0, 0), chart.tables.length - 1);
+
+        function show(i) {
+            current = i;
+            holder.innerHTML = "";
+            var t = chart.tables[i];
+            if (t.title) {
+                var sub = document.createElement("div");
+                sub.className = "sc-subtitle";
+                sub.textContent = t.title;
+                holder.appendChild(sub);
+            }
+            holder.appendChild(buildSizeChartTable(t.headers, t.rows));
+            if (tabsEl) {
+                for (var k = 0; k < tabsEl.children.length; k++) tabsEl.children[k].classList.toggle("active", k === i);
+            }
+        }
+
+        if (chart.tables.length > 1) {
+            tabsEl = document.createElement("div");
+            tabsEl.className = "sc-tabs";
+            chart.tables.forEach(function (t, i) {
+                var b = document.createElement("button");
+                b.type = "button";
+                b.className = "sc-tab";
+                b.textContent = t.tab || ("Table " + (i + 1));
+                b.onclick = function () { show(i); };
+                tabsEl.appendChild(b);
+            });
+            box.appendChild(tabsEl);
+        }
+        box.appendChild(holder);
+        show(current);
+
+        if (chart.note) {
+            var note = document.createElement("div");
+            note.className = "pd-sizechart-note";
+            note.textContent = chart.note;
+            box.appendChild(note);
+        }
+    }
+
+    // product details: the chart is visible as soon as the product opens
+    function pdRenderSizeChart(product) {
+        var box = document.getElementById("pdSizeChart");
+        if (!box) return;
+        var chart = resolveSizeChart(product);
+        if (!chart) { box.innerHTML = ""; box.style.display = "none"; return; }
+
+        // shoes: open the Women's table first for women's products
+        var tab = 0;
+        if (chart.kind === "shoes" && product.gender === "Female") tab = 1;
+        renderSizeChartInto(box, chart, tab, true);
+        box.style.display = "";
+    }
+
+    // ---- custom chart typed by the owner ----
+    // text -> { chart, error }.  Empty text = no chart.
+    function parseSizeChartText(text, note) {
+        var lines = String(text || "").split(/\r?\n/).map(function (l) { return l.trim(); }).filter(function (l) { return l !== ""; });
+        if (!lines.length) return { chart: null, error: "" };
+
+        function cells(line) {
+            var parts = line.indexOf("\t") !== -1 ? line.split("\t") : line.split(",");
+            return parts.map(function (c) { return c.trim().slice(0, SIZECHART_MAX_CELL); });
+        }
+
+        var headers = cells(lines[0]);
+        if (headers.length < 2) return { chart: null, error: "Size chart: put at least 2 columns on the first line (e.g. Size, Chest)." };
+        if (headers.length > SIZECHART_MAX_COLS) return { chart: null, error: "Size chart: up to " + SIZECHART_MAX_COLS + " columns only." };
+        if (lines.length < 2) return { chart: null, error: "Size chart: add at least one row under the column names." };
+        if (lines.length - 1 > SIZECHART_MAX_ROWS) return { chart: null, error: "Size chart: up to " + SIZECHART_MAX_ROWS + " rows only." };
+
+        var rows = [];
+        for (var i = 1; i < lines.length; i++) {
+            var r = cells(lines[i]);
+            if (r.length > headers.length) return { chart: null, error: "Size chart: row " + i + " has more values than column names." };
+            while (r.length < headers.length) r.push("");
+            rows.push({ c: r });
+        }
+        return { chart: { headers: headers, rows: rows, note: String(note || "").trim().slice(0, 120) }, error: "" };
+    }
+
+    function sizeChartToText(chart) {
+        if (!chart || !Array.isArray(chart.headers)) return "";
+        var out = [chart.headers.join(", ")];
+        scRows(chart).forEach(function (r) { out.push(r.join(", ")); });
+        return out.join("\n");
+    }
+
+    // ---- owner forms (Add / Edit product) ----
+    function sizeChartModeOf(which) {
+        return document.getElementById(which + "SizeChartMode").value || "auto";
+    }
+
+    // shows what the chart will be, and the custom editor only when "Custom" is picked
+    function sizeChartFormUpdate(which) {
+        var mode = sizeChartModeOf(which);
+        document.getElementById(which + "SizeChartCustom").style.display = (mode === "custom") ? "" : "none";
+
+        var info = document.getElementById(which + "SizeChartInfo");
+        var preview = document.getElementById(which + "SizeChartPreview");
+        preview.innerHTML = "";
+        info.textContent = "";
+
+        if (mode === "custom") {
+            var res = parseSizeChartText(
+                document.getElementById(which + "SizeChartText").value,
+                document.getElementById(which + "SizeChartNote").value
+            );
+            if (res.error) {
+                info.textContent = res.error;
+                info.className = "sizechart-info sizechart-info-error";
+            } else {
+                info.className = "sizechart-info";
+                info.textContent = res.chart ? "Preview:" : "Type your chart below (or press Insert example).";
+                if (res.chart) preview.appendChild(buildSizeChartTable(res.chart.headers, scRows(res.chart)));
+            }
+            return;
+        }
+
+        info.className = "sizechart-info";
+        if (mode === "none") { info.textContent = "No size chart will be shown for this product."; return; }
+
+        var kind = mode;
+        if (mode === "auto") {
+            var sizesRaw = document.getElementById(which + "ProductNoSize").checked ? ["One Size"] : null;
+            kind = detectSizeChartKind(
+                document.getElementById(which + "ProductName").value,
+                document.getElementById(which + "ProductCategory").value,
+                sizesRaw
+            );
+            info.textContent = kind
+                ? "Automatic: this product will show the " + SIZE_CHART_PRESETS[kind].label + " chart."
+                : "Automatic: no size chart fits this product (customers will not see one).";
+            return;
+        }
+        info.textContent = "This product will show the " + SIZE_CHART_PRESETS[kind].label + " chart.";
+    }
+
+    var _scFormTimer = null;
+    function sizeChartFormUpdateSoon(which) {
+        clearTimeout(_scFormTimer);
+        _scFormTimer = setTimeout(function () { sizeChartFormUpdate(which); }, 250);
+    }
+
+    function insertSizeChartExample(which) {
+        document.getElementById(which + "SizeChartText").value = SIZECHART_EXAMPLE;
+        if (!document.getElementById(which + "SizeChartNote").value) {
+            document.getElementById(which + "SizeChartNote").value = "All measurements are in inches.";
+        }
+        sizeChartFormUpdate(which);
+    }
+
+    function clearSizeChart(which) {
+        document.getElementById(which + "SizeChartText").value = "";
+        document.getElementById(which + "SizeChartNote").value = "";
+        sizeChartFormUpdate(which);
+    }
+
+    function fillSizeChartForm(which, product) {
+        var mode = (product && product.sizeChartMode) ? product.sizeChartMode : "auto";
+        document.getElementById(which + "SizeChartMode").value = mode;
+        var chart = product ? product.sizeChart : null;
+        document.getElementById(which + "SizeChartText").value = sizeChartToText(chart);
+        document.getElementById(which + "SizeChartNote").value = (chart && chart.note) ? chart.note : "";
+        sizeChartFormUpdate(which);
+    }
+
+    // -> { mode, chart (custom only), error }
+    function readSizeChartFromForm(which) {
+        var mode = sizeChartModeOf(which);
+        if (mode !== "custom") return { mode: mode, chart: null, error: "" };
+        var res = parseSizeChartText(
+            document.getElementById(which + "SizeChartText").value,
+            document.getElementById(which + "SizeChartNote").value
+        );
+        if (res.error) return { mode: mode, chart: null, error: res.error };
+        if (!res.chart) return { mode: mode, chart: null, error: "Size chart: type your custom chart, or choose another option." };
+        return { mode: mode, chart: res.chart, error: "" };
+    }
+
+    (function sizeChartFormEvents() {
+        ["new", "edit"].forEach(function (which) {
+            ["ProductName", "ProductCategory", "ProductNoSize"].forEach(function (suffix) {
+                var el = document.getElementById(which + suffix);
+                if (el) {
+                    el.addEventListener("input", function () { sizeChartFormUpdateSoon(which); });
+                    el.addEventListener("change", function () { sizeChartFormUpdateSoon(which); });
+                }
+            });
+        });
+    })();
+
+
     function openProductDetail(productId) {
         var product = PRODUCTS[productId];
         if (!product) return;
@@ -12971,6 +14127,7 @@ body.dark-mode .category-filter-panel .filter-group-label {
 
         pdGalleryStart(productId);
         pdSetGender(product);
+        pdRenderSizeChart(product);
         document.getElementById("pdName").textContent = product.name;
         document.getElementById("pdPrice").innerHTML = priceDisplayHtml(product);
 
