@@ -6998,6 +6998,45 @@ body.dark-mode .sc-tab.active {
 body.dark-mode .sc-subtitle {
     color: #ccc;
 }
+
+/* info pages: Terms, Data Privacy, How to Order, Size Guide */
+.info-content.info-left,
+.info-left {
+    text-align: left;
+}
+
+.info-content.info-wide {
+    max-width: 960px;
+}
+
+.info-steps {
+    margin: 0 0 20px;
+    padding-left: 22px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.info-steps li {
+    margin-bottom: 14px;
+}
+
+.sizeguide-block {
+    margin: 26px 0 30px;
+    text-align: left;
+}
+
+.sizeguide-block h3 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+body.dark-mode .info-steps {
+    color: #ddd;
+}
+
+body.dark-mode .info-content em {
+    color: #ddd;
+}
 </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7923,7 +7962,7 @@ body.dark-mode .sc-subtitle {
 
             <div class="sizechart-edit" id="newSizeChartBox">
                 <span class="form-hint" style="margin:0;"><strong>Size chart</strong> &mdash; customers see it right away when they open the product.</span>
-                <select id="newSizeChartMode" onchange="sizeChartFormUpdate('new')"><option value="auto">Automatic (based on the product's category / name)</option><option value="tshirt">T-Shirt &amp; Shorts chart</option><option value="shoes">Shoe size chart</option><option value="none">No size chart</option><option value="custom">Custom (I will type my own)</option></select>
+                <select id="newSizeChartMode" onchange="sizeChartFormUpdate('new')"><option value="auto">Automatic (based on the product's category / name)</option><option value="tshirt">T-Shirt &amp; Shorts chart</option><option value="shoes">Shoe size chart</option><option value="polo">Polo / Blouse chart</option><option value="pants">Pants / Slacks chart</option><option value="skirt">Skirt chart</option><option value="jacket">Jacket / Tracksuit / Hoodie chart</option><option value="socks">Socks chart</option><option value="none">No size chart</option><option value="custom">Custom (I will type my own)</option></select>
                 <span class="sizechart-info" id="newSizeChartInfo"></span>
                 <div id="newSizeChartCustom" style="display:none; flex-direction:column; gap:8px;">
                     <textarea id="newSizeChartText" rows="5" placeholder="Size, Chest (in), Length (in)&#10;S, 36, 26&#10;M, 38, 27&#10;L, 40, 28" oninput="sizeChartFormUpdateSoon('new')"></textarea>
@@ -8017,7 +8056,7 @@ body.dark-mode .sc-subtitle {
 
             <div class="sizechart-edit" id="editSizeChartBox">
                 <span class="form-hint" style="margin:0;"><strong>Size chart</strong> &mdash; customers see it right away when they open the product.</span>
-                <select id="editSizeChartMode" onchange="sizeChartFormUpdate('edit')"><option value="auto">Automatic (based on the product's category / name)</option><option value="tshirt">T-Shirt &amp; Shorts chart</option><option value="shoes">Shoe size chart</option><option value="none">No size chart</option><option value="custom">Custom (I will type my own)</option></select>
+                <select id="editSizeChartMode" onchange="sizeChartFormUpdate('edit')"><option value="auto">Automatic (based on the product's category / name)</option><option value="tshirt">T-Shirt &amp; Shorts chart</option><option value="shoes">Shoe size chart</option><option value="polo">Polo / Blouse chart</option><option value="pants">Pants / Slacks chart</option><option value="skirt">Skirt chart</option><option value="jacket">Jacket / Tracksuit / Hoodie chart</option><option value="socks">Socks chart</option><option value="none">No size chart</option><option value="custom">Custom (I will type my own)</option></select>
                 <span class="sizechart-info" id="editSizeChartInfo"></span>
                 <div id="editSizeChartCustom" style="display:none; flex-direction:column; gap:8px;">
                     <textarea id="editSizeChartText" rows="5" placeholder="Size, Chest (in), Length (in)&#10;S, 36, 26&#10;M, 38, 27&#10;L, 40, 28" oninput="sizeChartFormUpdateSoon('edit')"></textarea>
@@ -8172,10 +8211,10 @@ body.dark-mode .sc-subtitle {
         <li><a href="#privacy">Privacy Policy</a></li>
         <li><a href="#faqs">FAQs / Help Center</a></li>
         <li><a href="#return-policy">Return &amp; Refund Policy</a></li>
-        <li><a href="#">TEMPLATE 4</a></li>
-        <li><a href="#">TEMPLATE 5</a></li>
-        <li><a href="#">TEMPLATE 6</a></li>
-        <li><a href="#">TEMPLATE 7</a></li>
+        <li><a href="#terms">Terms &amp; Conditions</a></li>
+        <li><a href="#data-privacy">Data Privacy Notice</a></li>
+        <li><a href="#how-to-order">How to Order</a></li>
+        <li><a href="#size-guide">Size Guide</a></li>
         <li id="orderManagementMenuItem" style="display:none;"><a href="https://cvsupee.github.io/Panel/" target="_blank" rel="noopener">Admin/Seller Panel</a></li>
         <li id="promoManagerMenuItem" style="display:none;"><a href="#" onclick="closeSideMenu(); openPromoManager(); return false;">Promo Codes</a></li>
     </ul>
@@ -8686,6 +8725,342 @@ body.dark-mode .sc-subtitle {
 
 </div>
 
+<div class="site-page" data-page="terms">
+
+<section id="terms" class="info-section">
+
+    <div class="small-container">
+
+        <h2 class="title">
+            Terms &amp; Conditions
+        </h2>
+
+        <div class="info-content info-left">
+
+            <p>
+                By creating an account or placing an order on CVSPEE, you agree to
+                these terms. CVSPEE is a student project store operated by the
+                group members listed in our footer.
+            </p>
+
+            <p>
+                <strong>1. Who can use CVSPEE</strong><br>
+                CVSPEE is for students, teachers and parents of the campus
+                community. Students and teachers must sign up with their official
+                @cvsu.edu.ph email address and verify their identity with a valid
+                ID and a selfie holding it.
+            </p>
+
+            <p>
+                <strong>2. Your account</strong><br>
+                Please give accurate information and keep your password private.
+                You are responsible for what happens under your account. Using
+                someone else's ID, a fake ID, or false details is not allowed, and
+                we may reject or remove accounts that do this.
+            </p>
+
+            <p>
+                <strong>3. Products and prices</strong><br>
+                Prices are in Philippine pesos and products are available while
+                stocks last. Sizes and size charts are guides, so please check the
+                size chart on the product before you order. We may correct mistakes
+                in prices or stock.
+            </p>
+
+            <p>
+                <strong>4. Orders</strong><br>
+                Placing an order sends a request to our team. Your order is
+                reviewed by our team, and you can still ask for changes while it
+                is pending approval.
+            </p>
+
+            <p>
+                <strong>5. Payment and promo codes</strong><br>
+                We accept GCash and Cash on Delivery (COD). For GCash, you need to
+                send a screenshot of your payment confirmation. A promo code can
+                be used once per order, and it cannot be combined with a product
+                discount.
+            </p>
+
+            <p>
+                <strong>6. Delivery</strong><br>
+                We use the delivery location you pin and the phone number you
+                give us. Please make sure they are correct so your order can reach
+                you.
+            </p>
+
+            <p>
+                <strong>7. Cancellations, returns and refunds</strong><br>
+                To change or cancel an order, message us as soon as possible
+                through the order chat or our Contact page. For returns and
+                refunds, please read our Return &amp; Refund Policy.
+            </p>
+
+            <p>
+                <strong>8. Reviews and messages</strong><br>
+                Reviews, photos and messages you post must be honest and
+                respectful. We may remove content that is not.
+            </p>
+
+            <p>
+                <strong>9. Using the site properly</strong><br>
+                Please do not try to disrupt the site, access other people's
+                accounts, or use it for anything unlawful.
+            </p>
+
+            <p>
+                <strong>10. Changes to these terms</strong><br>
+                We may update these terms from time to time. By continuing to use
+                CVSPEE after an update, you accept the new terms.
+            </p>
+
+            <p>
+                <strong>11. Governing law</strong><br>
+                These terms are governed by the laws of the Republic of the
+                Philippines.
+            </p>
+
+            <p>
+                <strong>Questions?</strong><br>
+                Reach out through our Contact page.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+<div class="site-page" data-page="data-privacy">
+
+<section id="data-privacy" class="info-section">
+
+    <div class="small-container">
+
+        <h2 class="title">
+            Data Privacy Notice
+        </h2>
+
+        <div class="info-content info-left">
+
+            <p>
+                This notice explains what personal information CVSPEE collects, why
+                we collect it, and your rights under the Data Privacy Act of 2012
+                (Republic Act No. 10173).
+            </p>
+
+            <p>
+                <strong>What we collect</strong><br>
+                &bull; <em>Account details:</em> your full name, username, email,
+                password and role (student, teacher or parent), and your Student
+                ID number if you are a student.<br>
+                &bull; <em>ID verification:</em> a photo of your ID and a selfie
+                holding it.<br>
+                &bull; <em>Orders:</em> your name, phone number, pinned delivery
+                location, payment confirmation screenshot and order history.<br>
+                &bull; <em>Activity on the site:</em> your cart, wishlist, order
+                chat messages, and the reviews and photos you post.
+            </p>
+
+            <p>
+                <strong>Why we collect it</strong><br>
+                To create and verify your account, process and deliver your
+                orders, answer your messages and refund requests, and keep the shop
+                safe from fake accounts.
+            </p>
+
+            <p>
+                <strong>ID verification and AI</strong><br>
+                To check that your ID is real and matches the name and Student ID
+                number you typed, your ID photo and selfie are sent through our
+                server to an AI service (Google Gemini). The result of the check
+                decides whether your verification passes. Messages you type in the
+                shop's chat assistant are also processed by AI to prepare replies.
+            </p>
+
+            <p>
+                <strong>Where your information is stored</strong><br>
+                Your information is stored in our Firebase (Google Cloud)
+                database. Your ID photo and selfie are saved with your account
+                record so the verification can be reviewed by the shop team.
+            </p>
+
+            <p>
+                <strong>Who we share it with</strong><br>
+                We do not sell your information. We share it only with the
+                services we need to run the site: Google Firebase for storage and
+                Google Gemini for the AI checks described above.
+            </p>
+
+            <p>
+                <strong>How long we keep it</strong><br>
+                We keep your information while your account is active and for as
+                long as it is needed for orders, refunds and verification. You can
+                ask us to delete your account and information at any time.
+            </p>
+
+            <p>
+                <strong>Your rights</strong><br>
+                You have the right to be informed about how your data is used, to
+                access and correct it, to object to its processing, to ask for it
+                to be deleted or blocked, and to file a complaint with the
+                National Privacy Commission. To use any of these rights, contact us
+                through our Contact page.
+            </p>
+
+            <p>
+                <strong>Keep your account safe</strong><br>
+                Please keep your password private and never share your verification
+                codes. We will never ask for your card number, bank PIN or OTP.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+<div class="site-page" data-page="how-to-order">
+
+<section id="how-to-order" class="info-section">
+
+    <div class="small-container">
+
+        <h2 class="title">
+            How to Order
+        </h2>
+
+        <div class="info-content info-left">
+
+            <p>
+                Ordering from CVSPEE takes a few simple steps.
+            </p>
+
+            <ol class="info-steps">
+
+                <li>
+                    <strong>Create and verify your account.</strong>
+                    Sign up with your full name, username, email, password and role.
+                    Students and teachers use their official @cvsu.edu.ph email, and
+                    students also enter their Student ID number. Fill up the form
+                    first, then scan your ID, take a selfie holding it, and enter
+                    the verification code we send to your email.
+                </li>
+
+                <li>
+                    <strong>Find a product.</strong>
+                    Go to the Product page. Use the search box or Filters (category,
+                    gender and price) to narrow things down.
+                </li>
+
+                <li>
+                    <strong>Open the product.</strong>
+                    Tap a product to see its photos, details and size chart. Check
+                    the size chart to choose the right size.
+                </li>
+
+                <li>
+                    <strong>Choose your size and quantity.</strong>
+                    Then tap <em>Add to Cart</em> to keep shopping, or <em>Buy</em>
+                    to check out right away.
+                </li>
+
+                <li>
+                    <strong>Check out.</strong>
+                    Review your order. If you have a promo code, enter it here (it
+                    can't be used together with a product discount).
+                </li>
+
+                <li>
+                    <strong>Pay.</strong>
+                    Choose <em>GCash</em> or <em>Cash on Delivery</em>. For GCash,
+                    send the amount shown and keep a screenshot of your payment
+                    confirmation.
+                </li>
+
+                <li>
+                    <strong>Enter your delivery details.</strong>
+                    Give your full name and phone number, then pin your delivery
+                    location on the map.
+                </li>
+
+                <li>
+                    <strong>Track your order.</strong>
+                    Go to Account &rarr; Order to see your orders under To Ship, To
+                    Receive, To Review and Returns. You can message us through the
+                    order chat if you need to change something.
+                </li>
+
+                <li>
+                    <strong>Review or return.</strong>
+                    After delivery, you can rate the product. If there is a problem,
+                    see our Return &amp; Refund Policy.
+                </li>
+
+            </ol>
+
+            <p>
+                Need help? Visit our FAQs / Help Center or the Contact page.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
+<div class="site-page" data-page="size-guide">
+
+<section id="size-guide" class="info-section">
+
+    <div class="small-container">
+
+        <h2 class="title">
+            Size Guide
+        </h2>
+
+        <div class="info-content info-wide">
+
+            <p>
+                Use these charts to choose your size. Each product page also shows
+                its own size chart as soon as you open it.
+            </p>
+
+            <div id="sizeGuideCharts"></div>
+
+            <div class="info-left">
+
+                <p>
+                    <strong>How to measure</strong><br>
+                    &bull; <em>Chest:</em> measure around the fullest part of your
+                    chest, keeping the tape level.<br>
+                    &bull; <em>Waist:</em> measure around your natural waistline.<br>
+                    &bull; <em>Foot length:</em> stand on a sheet of paper and mark
+                    your heel and your longest toe, then measure the distance.
+                </p>
+
+                <p>
+                    <strong>Tip:</strong> if you are between two sizes, check the
+                    chest and length numbers and pick the one that fits the way you
+                    like to wear it. Sizes may vary slightly between items.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>
+
 <div class="site-page" data-page="account">
 
 <section id="account" class="info-section">
@@ -8870,7 +9245,7 @@ body.dark-mode .sc-subtitle {
 
     }
 
-    var PAGE_ORDER = ["home", "product", "about", "contact", "faqs", "return-policy", "privacy", "account"];
+    var PAGE_ORDER = ["home", "product", "about", "contact", "faqs", "return-policy", "privacy", "terms", "data-privacy", "how-to-order", "size-guide", "account"];
     var transitionOverlay = document.getElementById("pageTransitionOverlay");
     var TRANSITION_MS = 320;
     var currentPageKey = "home";
@@ -9075,13 +9450,132 @@ body.dark-mode .sc-subtitle {
         return null;
     }
 
-    db.collection("cvspee").doc("products").onSnapshot(function (doc) {
-        _cloud.products = (doc.exists && doc.data().map) ? doc.data().map : {};
-        _cloud.deletedDefaults = (doc.exists && Array.isArray(doc.data().deletedDefaults)) ? doc.data().deletedDefaults : [];
-        _cloud.ready.products = true;
-        seedDefaultProductsIfNeeded();
-        _onCloudChange("products");
-    }, function (err) { console.error("products sync error", err); });
+    // Products used to live in ONE document (cvspee/products) -> Firestore's 1 MB limit made the
+    // 10th product fail to save. Now every product is its own document in "cvspeeProducts".
+    var _productsMode = "perdoc";
+    var _pSync = { prod: false, meta: false };
+    var _legacyAttached = false;
+
+    function productDocRef(id) { return db.collection("cvspeeProducts").doc(id); }
+    function productsMetaRef() { return db.collection("cvspee").doc("productsMeta"); }
+    function cleanForSave(o) { return JSON.parse(JSON.stringify(o)); }
+    function productTooLarge(p) { return JSON.stringify(p).length > 900000; }
+
+    function reportProductSaveError(err) {
+        console.error("product save failed", err);
+        var code = (err && err.code) || "error";
+        var msg = "Sorry, the product change couldn't be saved (" + code + "). ";
+        if (code === "permission-denied") msg += "Your Firestore rules need to allow the cvspeeProducts collection.";
+        else if (code === "invalid-argument") msg += "The photo may be too big. Try a smaller image.";
+        else msg += "Please check your connection and try again.";
+        alert(msg);
+    }
+
+    function persistProductsLegacy() {
+        db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults || [] })
+            .catch(reportProductSaveError);
+    }
+
+    function persistProduct(id, alsoMeta) {
+        if (_productsMode === "legacy") { persistProductsLegacy(); return; }
+        var batch = db.batch();
+        batch.set(productDocRef(id), cleanForSave(_cloud.products[id]));
+        if (alsoMeta) batch.set(productsMetaRef(), { migrated: true, deletedDefaults: _cloud.deletedDefaults || [] }, { merge: true });
+        batch.commit().catch(reportProductSaveError);
+    }
+
+    function persistProductRemoval(id) {
+        if (_productsMode === "legacy") { persistProductsLegacy(); return; }
+        var batch = db.batch();
+        batch.delete(productDocRef(id));
+        batch.set(productsMetaRef(), { migrated: true, deletedDefaults: _cloud.deletedDefaults || [] }, { merge: true });
+        batch.commit().catch(reportProductSaveError);
+    }
+
+    function persistStockChanges(changes) {
+        if (_productsMode === "legacy") { persistProductsLegacy(); return; }
+        changes.forEach(function (c) {
+            var ref = productDocRef(c.id);
+            db.runTransaction(function (tx) {
+                return tx.get(ref).then(function (d) {
+                    if (!d.exists || typeof d.data().stock !== "number") return;
+                    tx.update(ref, { stock: Math.max(0, d.data().stock + c.delta) });
+                });
+            }).catch(function (err) { console.error("stock update failed", err); });
+        });
+    }
+
+    function migrateProductsToPerDoc() {
+        var legacyRef = db.collection("cvspee").doc("products");
+        var metaRef = productsMetaRef();
+        return db.runTransaction(function (tx) {
+            return tx.get(metaRef).then(function (metaDoc) {
+                if (metaDoc.exists && metaDoc.data().migrated) return;
+                return tx.get(legacyRef).then(function (legacyDoc) {
+                    var data = legacyDoc.exists ? legacyDoc.data() : {};
+                    var map = data.map || {};
+                    Object.keys(map).forEach(function (id) {
+                        if (map[id]) tx.set(productDocRef(id), cleanForSave(map[id]));
+                    });
+                    tx.set(metaRef, {
+                        migrated: true,
+                        deletedDefaults: Array.isArray(data.deletedDefaults) ? data.deletedDefaults : [],
+                        migratedAt: Date.now()
+                    });
+                });
+            });
+        });
+    }
+
+    function attachPerDocProducts() {
+        _productsMode = "perdoc";
+        productsMetaRef().onSnapshot(function (doc) {
+            if (_productsMode === "legacy") return;
+            _cloud.deletedDefaults = (doc.exists && Array.isArray(doc.data().deletedDefaults)) ? doc.data().deletedDefaults : [];
+            if (!doc.metadata.fromCache) _pSync.meta = true;
+            seedDefaultProductsIfNeeded();
+        }, function (err) { console.error("products meta sync error", err); });
+
+        db.collection("cvspeeProducts").onSnapshot(function (snap) {
+            if (_productsMode === "legacy") return;
+            var map = {};
+            snap.docs.forEach(function (d) { map[d.id] = d.data(); });
+            _cloud.products = map;
+            _cloud.ready.products = true;
+            if (!snap.metadata.fromCache) _pSync.prod = true;
+            seedDefaultProductsIfNeeded();
+            _onCloudChange("products");
+        }, function (err) {
+            console.error("products sync error", err);
+            if (err && err.code === "permission-denied") attachLegacyProducts();
+        });
+    }
+
+    // Fallback (old behaviour) only if Firestore rules block the new collection.
+    function attachLegacyProducts() {
+        if (_legacyAttached) return;
+        _legacyAttached = true;
+        _productsMode = "legacy";
+        db.collection("cvspee").doc("products").onSnapshot(function (doc) {
+            _cloud.products = (doc.exists && doc.data().map) ? doc.data().map : {};
+            _cloud.deletedDefaults = (doc.exists && Array.isArray(doc.data().deletedDefaults)) ? doc.data().deletedDefaults : [];
+            _cloud.ready.products = true;
+            seedDefaultProductsIfNeeded();
+            _onCloudChange("products");
+        }, function (err) { console.error("products sync error", err); });
+    }
+
+    function startProductsSync() {
+        productsMetaRef().get().then(function (d) {
+            if (d.exists && d.data().migrated) return;
+            return migrateProductsToPerDoc();
+        }).then(attachPerDocProducts).catch(function (err) {
+            console.error("products bootstrap failed", err);
+            if (err && err.code === "permission-denied") attachLegacyProducts();
+            else setTimeout(startProductsSync, 5000);
+        });
+    }
+    startProductsSync();
 
     migrateLegacyOrdersIfNeeded();
 
@@ -12080,23 +12574,19 @@ body.dark-mode .sc-subtitle {
 
     function seedDefaultProductsIfNeeded() {
         if (_productsSeeded || !_cloud.ready.products) return;
+        if (_productsMode === "perdoc" && !(_pSync.prod && _pSync.meta)) return;
         _productsSeeded = true;
 
-        var merged = {};
-        Object.keys(_cloud.products).forEach(function (id) { merged[id] = _cloud.products[id]; });
-
-        var changed = false;
-        Object.keys(DEFAULT_PRODUCTS).forEach(function (id) {
-            if (!merged[id] && (_cloud.deletedDefaults || []).indexOf(id) === -1) {
-                merged[id] = DEFAULT_PRODUCTS[id];
-                changed = true;
-            }
+        var missing = Object.keys(DEFAULT_PRODUCTS).filter(function (id) {
+            return !_cloud.products[id] && (_cloud.deletedDefaults || []).indexOf(id) === -1;
         });
+        if (missing.length === 0) return;
 
-        if (changed) {
-            _cloud.products = merged;
-            db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults });
-        }
+        missing.forEach(function (id) { _cloud.products[id] = DEFAULT_PRODUCTS[id]; });
+        if (_productsMode === "legacy") { persistProductsLegacy(); return; }
+        var batch = db.batch();
+        missing.forEach(function (id) { batch.set(productDocRef(id), cleanForSave(DEFAULT_PRODUCTS[id])); });
+        batch.commit().catch(function (err) { console.error("seed defaults failed", err); });
     }
 
     var NEW_PRODUCT_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
@@ -12594,17 +13084,17 @@ body.dark-mode .sc-subtitle {
     function adjustStockForItems(items, direction) {
         if (!items || items.length === 0) return;
 
-        var changed = false;
+        var changes = [];
         items.forEach(function (item) {
             var product = _cloud.products[item.id];
             if (!product || typeof product.stock !== "number") return;
             product.stock = Math.max(0, product.stock + (direction * item.qty));
             if (PRODUCTS[item.id]) PRODUCTS[item.id].stock = product.stock;
-            changed = true;
+            changes.push({ id: item.id, delta: direction * item.qty });
         });
 
-        if (changed) {
-            db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults });
+        if (changes.length) {
+            persistStockChanges(changes);
             renderProductGrid();
         }
     }
@@ -13060,6 +13550,10 @@ body.dark-mode .sc-subtitle {
             createdAt: Date.now()
         };
 
+        if (productTooLarge(product)) {
+            errorEl.textContent = "That photo is too large to save. Please use a smaller image.";
+            return false;
+        }
         _cloud.products[id] = product;
         PRODUCTS[id] = product;
         if (_cloud.deletedDefaults) {
@@ -13067,7 +13561,7 @@ body.dark-mode .sc-subtitle {
             if (ddIdx !== -1) _cloud.deletedDefaults.splice(ddIdx, 1);
         }
         if (newProductExtraImages.length) saveProductGallery(id, newProductExtraImages);
-        db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults });
+        persistProduct(id, true);
 
         errorEl.textContent = "";
         closeAddProductModal();
@@ -13090,7 +13584,7 @@ body.dark-mode .sc-subtitle {
                 _cloud.deletedDefaults.push(productId);
             }
 
-            db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults });
+            persistProductRemoval(productId);
 
             renderProductGrid();
         }, { title: "Remove Product", okText: "Remove" });
@@ -13282,10 +13776,14 @@ body.dark-mode .sc-subtitle {
             createdAt: (typeof existing.createdAt === "number") ? existing.createdAt : null
         };
 
+        if (productTooLarge(updatedProduct)) {
+            errorEl.textContent = "That photo is too large to save. Please use a smaller image.";
+            return false;
+        }
         _cloud.products[productId] = updatedProduct;
         PRODUCTS[productId] = updatedProduct;
         if (editGalleryLoaded) saveProductGallery(productId, editProductExtraImages);
-        db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults });
+        persistProduct(productId, false);
 
         errorEl.textContent = "";
         closeEditProductModal();
@@ -13312,7 +13810,7 @@ body.dark-mode .sc-subtitle {
                 _cloud.deletedDefaults.push(productId);
             }
 
-            db.collection("cvspee").doc("products").set({ map: _cloud.products, deletedDefaults: _cloud.deletedDefaults });
+            persistProductRemoval(productId);
 
             closeEditProductModal();
             renderProductGrid();
@@ -13831,6 +14329,120 @@ body.dark-mode .sc-subtitle {
         }
     };
 
+
+    // More ready-made charts. They are a standard size guide (approximate), so each one shows a note.
+    // Waist ranges and the foot lengths follow the two charts supplied by the shop.
+    SIZE_CHART_PRESETS.polo = {
+        label: "Polo / Blouse (Uniform)",
+        title: "Polo & Blouse Size Chart (Uniform)",
+        tables: [
+            {
+                tab: "Male",
+                title: "Male Polo / Uniform (Inches)",
+                headers: ["Size", "Chest / Width", "Shoulder", "Sleeve Length", "Shirt Length"],
+                rows: [
+                    ["S", "19\"", "16.5\"", "8\"", "26\""],
+                    ["M", "20\"", "17.5\"", "8.5\"", "27\""],
+                    ["L", "21\"", "18.5\"", "9\"", "28\""],
+                    ["XL", "22\"", "19.5\"", "9.5\"", "29\""],
+                    ["2XL", "23\"", "20.5\"", "10\"", "30\""]
+                ]
+            },
+            {
+                tab: "Female",
+                title: "Female Blouse / Uniform (Inches)",
+                headers: ["Size", "Chest / Width", "Shoulder", "Sleeve Length", "Blouse Length"],
+                rows: [
+                    ["S", "17\"", "14.5\"", "7\"", "24\""],
+                    ["M", "18\"", "15\"", "7.5\"", "25\""],
+                    ["L", "19\"", "15.5\"", "8\"", "26\""],
+                    ["XL", "20\"", "16\"", "8.5\"", "27\""],
+                    ["2XL", "21\"", "16.5\"", "9\"", "28\""]
+                ]
+            }
+        ],
+        note: "Standard size guide. Measurements are approximate and may vary by about 1 inch."
+    };
+
+    SIZE_CHART_PRESETS.pants = {
+        label: "Pants / Slacks",
+        title: "Pants & Slacks Size Chart (Unisex)",
+        tables: [
+            {
+                tab: "",
+                title: "Pants / Slacks (Inches)",
+                headers: ["Size", "Waistline", "Hip", "Inseam", "Pants Length"],
+                rows: [
+                    ["S", "26\" \u2013 28\"", "34\" \u2013 36\"", "29\"", "38\""],
+                    ["M", "29\" \u2013 31\"", "37\" \u2013 39\"", "30\"", "39\""],
+                    ["L", "32\" \u2013 34\"", "40\" \u2013 42\"", "30\"", "40\""],
+                    ["XL", "35\" \u2013 37\"", "43\" \u2013 45\"", "31\"", "41\""],
+                    ["2XL", "38\" \u2013 40\"", "46\" \u2013 48\"", "31\"", "42\""]
+                ]
+            }
+        ],
+        note: "Standard size guide. Measurements are approximate and may vary by about 1 inch."
+    };
+
+    SIZE_CHART_PRESETS.skirt = {
+        label: "Skirt",
+        title: "Skirt Size Chart",
+        tables: [
+            {
+                tab: "",
+                title: "Skirt (Inches)",
+                headers: ["Size", "Waistline", "Hip", "Skirt Length"],
+                rows: [
+                    ["S", "24\" \u2013 26\"", "34\" \u2013 36\"", "20\""],
+                    ["M", "26\" \u2013 28\"", "36\" \u2013 38\"", "21\""],
+                    ["L", "28\" \u2013 30\"", "38\" \u2013 40\"", "22\""],
+                    ["XL", "30\" \u2013 32\"", "40\" \u2013 42\"", "22\""],
+                    ["2XL", "32\" \u2013 34\"", "42\" \u2013 44\"", "23\""]
+                ]
+            }
+        ],
+        note: "Standard size guide. Measurements are approximate and may vary by about 1 inch."
+    };
+
+    SIZE_CHART_PRESETS.jacket = {
+        label: "Jacket / Tracksuit / Hoodie",
+        title: "Jacket, Tracksuit & Hoodie Size Chart (Unisex)",
+        tables: [
+            {
+                tab: "",
+                title: "Jacket / Tracksuit Top (Inches)",
+                headers: ["Size", "Chest / Width", "Shoulder", "Sleeve Length", "Jacket Length"],
+                rows: [
+                    ["S", "21\"", "17.5\"", "24\"", "26\""],
+                    ["M", "22\"", "18.5\"", "25\"", "27\""],
+                    ["L", "23\"", "19.5\"", "25.5\"", "28\""],
+                    ["XL", "24\"", "20.5\"", "26\"", "29\""],
+                    ["2XL", "25\"", "21.5\"", "26.5\"", "30\""]
+                ]
+            }
+        ],
+        note: "Standard size guide. Measurements are approximate and may vary by about 1 inch."
+    };
+
+    // foot lengths and EU sizes come from the shoe chart above
+    SIZE_CHART_PRESETS.socks = {
+        label: "Socks",
+        title: "Socks Size Chart",
+        tables: [
+            {
+                tab: "",
+                title: "Socks (matches your shoe size)",
+                headers: ["Size", "Foot Length (CM)", "EU / Asian Standard", "Fits Shoe Size"],
+                rows: [
+                    ["S", "22.0 \u2013 24.0 cm", "EU 35.5 \u2013 37.5", "Women's US 5 \u2013 7"],
+                    ["M", "24.0 \u2013 26.0 cm", "EU 37.5 \u2013 40", "Women's US 7 \u2013 9 / Men's US 7"],
+                    ["L", "26.0 \u2013 29.0 cm", "EU 40 \u2013 45", "Men's US 8 \u2013 11"]
+                ]
+            }
+        ],
+        note: "Standard size guide. Measurements are approximate and may vary by about 1 inch."
+    };
+
     var SIZECHART_MODES = [
         { value: "auto", label: "Automatic (based on the product's category / name)" },
         { value: "tshirt", label: "T-Shirt & Shorts chart" },
@@ -13844,13 +14456,22 @@ body.dark-mode .sc-subtitle {
     var SIZECHART_MAX_CELL = 24;
     var SIZECHART_EXAMPLE = "Size, Chest (in), Length (in)\nS, 36, 26\nM, 38, 27\nL, 40, 28\nXL, 42, 29";
 
-    // which ready-made chart fits this product?  returns "shoes", "tshirt" or "" (none)
+    // which ready-made chart fits this product?  returns "shoes", "socks", "pants", "skirt", "tshirt",
+    // "jacket", "polo" or "" (none).  The product NAME is checked first (most specific), then the category.
     function detectSizeChartKind(name, category, sizes) {
         // accessories / items with no size ("One Size") never need a chart
         if (Array.isArray(sizes) && sizes.length === 1 && /one\s*size/i.test(String(sizes[0]))) return "";
-        var text = (String(category || "") + " " + String(name || "")).toLowerCase();
-        if (/shoe|footwear|sneaker|sandal|slipper|boots?\b|loafer/.test(text)) return "shoes";
-        if (/uniform|t-?shirt|\btee\b|shirt|jersey|shorts|polo|blouse|pants|trouser|jogger|tracksuit|track\s*suit|jacket|hoodie|apparel|clothing|\bpe\b/.test(text)) return "tshirt";
+        var n = String(name || "").toLowerCase();
+        var all = (String(category || "") + " " + n).toLowerCase();
+
+        if (/shoe|footwear|sneaker|sandal|slipper|boots?\b|loafer/.test(all)) return "shoes";
+        if (/sock|medyas/.test(n)) return "socks";
+        if (/pants|trouser|slacks|jogger/.test(n)) return "pants";
+        if (/skirt|palda/.test(n)) return "skirt";
+        if (/jacket|hoodie|tracksuit|track\s*suit|windbreaker|sweater/.test(n)) return "jacket";
+        if (/shorts|t-?shirt|\btee\b|jersey|\bpe\b/.test(n)) return "tshirt";
+        if (/polo|blouse|uniform|shirt/.test(all)) return "polo";
+        if (/apparel|clothing/.test(all)) return "tshirt";
         return "";
     }
 
@@ -13972,7 +14593,7 @@ body.dark-mode .sc-subtitle {
 
         // shoes: open the Women's table first for women's products
         var tab = 0;
-        if (chart.kind === "shoes" && product.gender === "Female") tab = 1;
+        if ((chart.kind === "shoes" || chart.kind === "polo") && product.gender === "Female") tab = 1;
         renderSizeChartInto(box, chart, tab, true);
         box.style.display = "";
     }
@@ -14102,6 +14723,27 @@ body.dark-mode .sc-subtitle {
         if (!res.chart) return { mode: mode, chart: null, error: "Size chart: type your custom chart, or choose another option." };
         return { mode: mode, chart: res.chart, error: "" };
     }
+
+    // Size Guide page: every ready-made chart in one place
+    function renderSizeGuidePage() {
+        var host = document.getElementById("sizeGuideCharts");
+        if (!host) return;
+        host.innerHTML = "";
+        ["polo", "tshirt", "pants", "skirt", "jacket", "socks", "shoes"].forEach(function (key) {
+            var preset = SIZE_CHART_PRESETS[key];
+            if (!preset) return;
+            var block = document.createElement("div");
+            block.className = "sizeguide-block";
+            var h = document.createElement("h3");
+            h.textContent = preset.title;
+            block.appendChild(h);
+            var box = document.createElement("div");
+            renderSizeChartInto(box, { title: "", tables: preset.tables, note: preset.note || "" }, 0, false);
+            block.appendChild(box);
+            host.appendChild(block);
+        });
+    }
+    renderSizeGuidePage();
 
     (function sizeChartFormEvents() {
         ["new", "edit"].forEach(function (which) {
