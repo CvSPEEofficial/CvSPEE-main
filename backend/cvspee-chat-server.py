@@ -72,6 +72,13 @@ def product_chat():
 
     sizes = product.get("sizes") if isinstance(product.get("sizes"), list) else []
 
+    # the size the customer has picked so far (may be None), and the product's size chart as text
+    selected_size = data.get("selectedSize")
+    if not isinstance(selected_size, str) or selected_size not in sizes:
+        selected_size = None
+    size_chart_text = product.get("sizeChart") if isinstance(product.get("sizeChart"), str) else ""
+    size_chart_text = size_chart_text.strip()[:4000]
+
     system_prompt = "\n".join([
         "You are the \"CVSPEE Assistant\" — a shopping assistant that lives",
         "inside the product chat window of ONE product only.",
@@ -103,6 +110,30 @@ def product_chat():
         f"- Description: {product.get('description') or '(none)'}",
         f"- Available sizes: {', '.join(sizes) if sizes else '(single size / no sizes)'}",
         f"- Stock: {product.get('stock') if product.get('stock') is not None else '(unknown)'}",
+        f"- Size currently selected by the customer: {selected_size or '(none yet)'}",
+        "",
+        "Size chart for this product (a guide; use ONLY these numbers):",
+        size_chart_text if size_chart_text else "(this product has no size chart)",
+        "",
+        "SIZE CHART QUESTIONS: If the customer asks about the size chart,",
+        "measurements, or which size would fit them, ANSWER using the size",
+        "chart above — summarise the relevant rows briefly, and if they give",
+        "their own measurements, recommend the closest size (say it is a",
+        "guide, and suggest sizing up if they are between two sizes). In",
+        "the chart, S / M / L / XL / 2XL match the sizes Small / Medium /",
+        "Large / Extra Large / 2XL. Never invent measurements that are not",
+        "in the chart. If there is no size chart, say so politely. When you",
+        "talk about the chart, also call the `show_size_chart` tool so the",
+        "table is shown to the customer.",
+        "",
+        "CHANGING THE SIZE: The customer may change their size as many times",
+        "as they like before they continue to payment. If they ask to change,",
+        "switch, replace or edit their size (for example \"palitan ang size",
+        "ko gusto ko gawin small\", \"change it to large\", \"make it medium",
+        "instead\"), call the `select_size` tool with the NEW size, even if a",
+        "size is already selected, and confirm the change in text (mention",
+        "the old and new size). If the new size is not one of the available",
+        "sizes, say which sizes are available and keep the current size.",
         "",
         "When the customer has clearly confirmed which size they want to",
         "buy (and the product has available sizes), use the `select_size`",
@@ -118,11 +149,15 @@ def product_chat():
         "not a robot.",
     ])
 
-    tools = None
+    declarations = []
     if sizes:
-        select_size_fn = types.FunctionDeclaration(
+        declarations.append(types.FunctionDeclaration(
             name="select_size",
-            description="Call this when the customer has clearly confirmed which size they want to buy.",
+            description=(
+                "Call this when the customer has clearly confirmed which size they want to buy, "
+                "OR when they ask to change/replace/switch the size they already picked "
+                "(use the NEW size)."
+            ),
             parameters={
                 "type": "object",
                 "properties": {
@@ -130,8 +165,13 @@ def product_chat():
                 },
                 "required": ["size"],
             },
-        )
-        tools = [types.Tool(function_declarations=[select_size_fn])]
+        ))
+    if size_chart_text:
+        declarations.append(types.FunctionDeclaration(
+            name="show_size_chart",
+            description="Call this to show the product's size chart table to the customer.",
+        ))
+    tools = [types.Tool(function_declarations=declarations)] if declarations else None
 
     contents = _history_to_contents(history)
     contents.append(types.Content(role="user", parts=[types.Part(text=message)]))
@@ -152,7 +192,8 @@ def product_chat():
         return jsonify({"error": "Something went wrong."}), 500
 
     reply = ""
-    selected_size = None
+    new_size = None
+    show_chart = False
 
     candidate = response.candidates[0] if response.candidates else None
     if candidate and candidate.content and candidate.content.parts:
@@ -161,13 +202,23 @@ def product_chat():
                 reply += part.text
             fc = getattr(part, "function_call", None)
             if fc and fc.name == "select_size":
-                selected_size = (fc.args or {}).get("size")
+                new_size = (fc.args or {}).get("size")
+            elif fc and fc.name == "show_size_chart" and size_chart_text:
+                show_chart = True
+
+    # only accept a size that really exists for this product
+    if new_size not in sizes:
+        new_size = None
 
     if not reply.strip():
-        reply = _varied_size_confirmation(message, selected_size) if selected_size else \
-            _varied_no_reply(message)
+        if new_size:
+            reply = _varied_size_confirmation(message, new_size, selected_size)
+        elif show_chart:
+            reply = _varied_chart_reply(message)
+        else:
+            reply = _varied_no_reply(message)
 
-    return jsonify({"reply": reply, "size": selected_size})
+    return jsonify({"reply": reply, "size": new_size, "show_size_chart": show_chart})
 
 
 _TAGALOG_MARKERS = re.compile(
@@ -182,7 +233,21 @@ def _is_tagalog(message):
     return bool(_TAGALOG_MARKERS.search(message or ""))
 
 
-def _varied_size_confirmation(message, size):
+def _varied_size_confirmation(message, size, previous=None):
+    if previous and previous != size:
+        if _is_tagalog(message):
+            templates = [
+                f"Sige, pinalitan ko na ang size mo mula {previous} papuntang {size}.",
+                f"Okay po, ginawa ko nang {size} ang size mo (dati {previous}).",
+                f"Tapos na — {size} na ang size mo, hindi na {previous}.",
+            ]
+        else:
+            templates = [
+                f"Done — I changed your size from {previous} to {size}.",
+                f"Sure, you're now set for size {size} instead of {previous}.",
+                f"Updated! Your size is now {size} (it was {previous}).",
+            ]
+        return random.choice(templates)
     if _is_tagalog(message):
         templates = [
             f"Naitala ko na — size {size} ang order mo!",
@@ -200,6 +265,18 @@ def _varied_size_confirmation(message, size):
             f"All set — I've recorded size {size}.",
         ]
     return random.choice(templates)
+
+
+def _varied_chart_reply(message):
+    if _is_tagalog(message):
+        return random.choice([
+            "Ito po ang size chart ng product na ito.",
+            "Heto ang size chart — tingnan mo ang sukat na bagay sa iyo.",
+        ])
+    return random.choice([
+        "Here's the size chart for this product.",
+        "Here you go — this is the size chart.",
+    ])
 
 
 def _varied_no_reply(message):
