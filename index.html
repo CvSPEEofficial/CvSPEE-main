@@ -7037,6 +7037,46 @@ body.dark-mode .info-steps {
 body.dark-mode .info-content em {
     color: #ddd;
 }
+
+/* product chat: size buttons stay visible so the size can be changed, + size chart bubble */
+.chat-choice-btn.selected {
+    background: #0B5C2E;
+    color: #fff;
+}
+
+.chat-choice-btn.chat-choice-chart {
+    border-style: dashed;
+}
+
+.chat-choice-label {
+    flex: 0 0 100%;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.chat-bubble.chat-bubble-chart {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+}
+
+.chat-bubble-chart .pd-sizechart-title {
+    margin-bottom: 8px;
+}
+
+body.dark-mode .chat-choice-btn.selected {
+    background: #0B5C2E;
+}
+
+body.dark-mode .chat-bubble.chat-bubble-chart {
+    background: #1e1e1e;
+    border-color: #333;
+}
 </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15598,6 +15638,7 @@ body.dark-mode .info-content em {
             greeting = chatFlowSource === "cart"
                 ? "Hi! Let's get " + product.name + " ready for your cart. What would you like to know, or are you ready to pick a size?"
                 : "Hi! Ask me anything about " + product.name + ", or let me know when you're ready to buy.";
+            greeting += " You can ask about the size chart, and you can change your size anytime by tapping a size or telling me.";
         }
         addChatMessage("ai", greeting);
 
@@ -15631,7 +15672,7 @@ body.dark-mode .info-content em {
         options.forEach(function (opt) {
             var btn = document.createElement("button");
             btn.type = "button";
-            btn.className = "chat-choice-btn";
+            btn.className = "chat-choice-btn" + (opt.selected ? " selected" : "") + (opt.className ? " " + opt.className : "");
             btn.textContent = opt.label;
             btn.addEventListener("click", opt.onSelect);
             choicesEl.appendChild(btn);
@@ -15643,6 +15684,51 @@ body.dark-mode .info-content em {
     
     var chatHistory = [];
     var PRODUCT_CHAT_ENDPOINT = "https://cvspee-production.up.railway.app/api/product-chat";
+
+    // the product's size chart as plain text, so the AI can answer questions about it
+    function sizeChartTextForAI(product) {
+        var chart = resolveSizeChart(product);
+        if (!chart) return "";
+        var out = [];
+        if (chart.title) out.push(chart.title);
+        chart.tables.forEach(function (t) {
+            if (t.title) out.push("[" + t.title + "]");
+            out.push(t.headers.join(" | "));
+            t.rows.forEach(function (r) { out.push(r.join(" | ")); });
+        });
+        if (chart.note) out.push("Note: " + chart.note);
+        return out.join("\n").slice(0, 4000);
+    }
+
+    // shows the size chart table as a message in the chat; returns false if the product has none
+    function appendSizeChartToChat() {
+        var product = PRODUCTS[chatState.productId];
+        var chart = product ? resolveSizeChart(product) : null;
+        if (!chart) return false;
+
+        var messagesEl = document.getElementById("chatMessages");
+        var bubble = document.createElement("div");
+        bubble.className = "chat-bubble chat-bubble-ai chat-bubble-chart";
+        var box = document.createElement("div");
+        var tab = ((chart.kind === "shoes" || chart.kind === "polo") && product.gender === "Female") ? 1 : 0;
+        renderSizeChartInto(box, chart, tab, true);
+        bubble.appendChild(box);
+        messagesEl.appendChild(bubble);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return true;
+    }
+
+    // the "Size chart" button in the chat
+    function handleSizeChartChoice() {
+        var product = PRODUCTS[chatState.productId];
+        if (!product) return;
+        addChatMessage("user", "Size chart");
+        if (appendSizeChartToChat()) {
+            addChatMessage("ai", "Here's the size chart for " + product.name + ". Pick your size below" + (chatState.size ? " — you can still change it." : "."));
+        } else {
+            addChatMessage("ai", "Sorry, " + product.name + " doesn't have a size chart.");
+        }
+    }
 
     function sendProductChatMessage() {
         if (chatMode !== "buy") return;
@@ -15674,8 +15760,10 @@ body.dark-mode .info-content em {
                     price: getDiscountedPrice(product),
                     description: product.description,
                     sizes: product.sizes,
-                    stock: product.stock
+                    stock: product.stock,
+                    sizeChart: sizeChartTextForAI(product)
                 },
+                selectedSize: chatState.size || null,
                 message: text,
                 history: historyForRequest
             })
@@ -15690,6 +15778,11 @@ body.dark-mode .info-content em {
                 addChatMessage("ai", reply);
                 chatHistory.push({ role: "assistant", content: reply });
 
+                if (data && data.show_size_chart) {
+                    appendSizeChartToChat();
+                }
+
+                // the AI picked or CHANGED the size (the size buttons update to match)
                 if (data && data.size && product.sizes.indexOf(data.size) !== -1) {
                     chatSelectSize(data.size);
                 }
@@ -15803,6 +15896,10 @@ body.dark-mode .info-content em {
     function chatSelectSize(size) {
         chatState.size = size;
         document.getElementById("chatContinueBtn").disabled = false;
+
+        // keep the size buttons visible (the chosen one highlighted) so the size can still be changed
+        var product = PRODUCTS[chatState.productId];
+        if (product && product.sizes && product.sizes.length > 1) showChatSizeChoices();
     }
 
     
@@ -15829,9 +15926,11 @@ body.dark-mode .info-content em {
 
         var label = chatFlowSource === "cart" ? "I'm ready to add to cart" : "I'm ready to buy";
 
-        renderChatChoices([
-            { label: label, onSelect: handleReadyToBuyChoice }
-        ]);
+        var options = [{ label: label, onSelect: handleReadyToBuyChoice }];
+        if (resolveSizeChart(product)) {
+            options.push({ label: "Size chart", className: "chat-choice-chart", onSelect: handleSizeChartChoice });
+        }
+        renderChatChoices(options);
     }
 
     function handleReadyToBuyChoice() {
@@ -15847,6 +15946,7 @@ body.dark-mode .info-content em {
                 ? "Great! " + product.name + " in size " + chatState.size + " is all set. Tap Continue below whenever you're ready."
                 : "Great! " + product.name + " is all set. Tap Continue below whenever you're ready.";
             addChatMessage("ai", confirmMsg);
+            if (product.sizes && product.sizes.length > 1) showChatSizeChoices();   // still changeable
             return;
         }
 
@@ -15854,28 +15954,39 @@ body.dark-mode .info-content em {
         showChatSizeChoices();
     }
 
+    // the size buttons: the chosen size is highlighted and any button can be tapped to change it
     function showChatSizeChoices() {
         var product = PRODUCTS[chatState.productId];
         if (!product || !product.sizes) return;
 
-        renderChatChoices(product.sizes.map(function (size) {
+        var options = product.sizes.map(function (size) {
             return {
                 label: size,
+                selected: chatState.size === size,
                 onSelect: function () { handleChatSizeChoice(size); }
             };
-        }));
+        });
+        if (resolveSizeChart(product)) {
+            options.push({ label: "Size chart", className: "chat-choice-chart", onSelect: handleSizeChartChoice });
+        }
+        renderChatChoices(options);
     }
 
     function handleChatSizeChoice(size) {
         var product = PRODUCTS[chatState.productId];
         if (!product) return;
 
+        var previous = chatState.size;
+        if (previous === size) return;                    // already selected: nothing to change
+
         addChatMessage("user", size);
-        document.getElementById("chatChoices").innerHTML = "";
+        chatSelectSize(size);                             // also refreshes the highlighted button
 
-        chatSelectSize(size);
-
-        addChatMessage("ai", "Got it — size " + size + " selected for " + product.name + ". Tap Continue below whenever you're ready.");
+        if (previous) {
+            addChatMessage("ai", "Okay — changed your size from " + previous + " to " + size + " for " + product.name + ". Tap Continue below whenever you're ready, or change it again anytime.");
+        } else {
+            addChatMessage("ai", "Got it — size " + size + " selected for " + product.name + ". Tap Continue below whenever you're ready. You can still change it by tapping another size or telling me.");
+        }
     }
 
     function continueToPaymentFromChat() {
