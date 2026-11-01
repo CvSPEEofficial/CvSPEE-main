@@ -7078,6 +7078,20 @@ body.dark-mode .chat-bubble.chat-bubble-chart {
     background: #1e1e1e;
     border-color: #333;
 }
+
+/* === Header logo override (bigger logo, no tagline) === */
+.site-navbar .logo .logo-tagline { display: none !important; }
+.site-navbar .logo img {
+    height: 70px !important;
+    width: auto !important;
+    max-width: none !important;
+}
+@media only screen and (max-width: 800px) {
+    .site-navbar .logo img {
+        height: 52px !important;
+        max-width: 56vw !important;
+    }
+}
 </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8195,7 +8209,7 @@ body.dark-mode .chat-bubble.chat-bubble-chart {
             </button>
 
             <div class="logo">
-                <img src="images/logo.png" alt="CVSPEE">
+                <img src="images/logo.png?v=2" alt="CVSPEE">
             </div>
 
             <nav>
